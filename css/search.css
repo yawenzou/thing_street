@@ -1,0 +1,221 @@
+/*搜索页面*/
+*{margin: 0px;padding:0px;text-decoration: none;list-style-type: none;}
+.header{
+	height: 30px;
+	width: 100%;
+	background-color: #EFEFEF;
+	font-size: 14px;
+	line-height: 30px;
+}
+.header ul{
+	float: right;
+	margin-right: 20px;
+	width: 280px;
+}
+.header li{
+    width: auto;
+    padding: 0px 10px;
+    float: left;
+    display: inline-block;
+}
+.header li a{
+	color: #000;
+}
+.mid{
+	width: 600px;
+	position: absolute;
+	left: 50%;
+	margin:150px 0px 0px -300px;
+}
+.logo{
+	width: 170px;
+	height: 60px;
+	vertical-align: middle;
+	background-color: #89B9EA;
+	margin-bottom: 15px;
+	position: relative;
+}
+.place{
+	position: absolute;
+	top: 0px;
+	margin-left: 170px;
+	font-size: 24px;
+	cursor: pointer;
+	font-weight: bold;
+}
+.shangecity{
+	position: absolute;
+	left: 240px;
+	top: 0px;
+	width: 300px;
+	height: 150px;
+	background-color: #fff;
+	border: 1px solid #dedede;
+	display: none;
+}
+.shangecity li{
+	display: inline-block;
+	float: left;
+	padding:5px;
+	cursor: pointer;
+	color: #A8AFB3;
+}
+.shangecity li:hover{
+	color: #232323;
+}
+.change-place{
+	position: absolute;
+	top: 30px;
+	margin-left: 170px;
+	font-size: 14px;
+	cursor: pointer;
+	color: #999999;
+}
+.search{
+	width: 600px;
+	height: 40px;
+	position: relative;
+}
+.ser{
+	width: 498px;
+	height: 38px;
+    border: 1px solid #938E8E;
+    display: inline-block;
+    line-height: 38px;
+    position: relative;
+    text-indent: 5px;
+}
+.ser:hover{
+	border: 1px solid #4791FF;
+}
+.ser:focus{
+	border: 1px solid #4791FF;
+}
+.ser-ico{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	display: inline-block;
+	background-color: #3385FF;
+	float: right;
+	cursor: pointer;
+	color: #fff;
+}
+.ser-ico:hover{
+	background-color: #317EF3;
+}
+
+.coupon{
+	width: 500px;
+	height: 200px;
+	bottom: 30px;
+	position: absolute;
+	right: 0px;
+	overflow: hidden;
+}
+.footer{
+	height: 30px;
+	text-align: center;
+	position: absolute;
+	bottom: 0px;
+	color: #555;
+	line-height: 30px;
+	background-color: #EFEFEF;
+	width: 100%;
+}
+.privilege-list tr{
+	height: 30px;
+	line-height: 30px;
+}
+.privilege-list tr:hover{
+	background-color: #E5EBF0;
+	cursor: pointer;
+}
+.privilege-list td,.privilege-list th{
+	height: 30px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow: ellipsis;
+	display: inline-block;
+	float: left;
+	text-indent: 5px;
+	text-align: center;
+}
+.w250{
+	width: 200px;
+}
+.w100{
+	width: 100px;
+}
+.w150{
+	width: 200px;
+}
+.th{
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.th li{
+	height: 30px;
+	display: inline-block;
+	float: left;
+	text-align: center;
+}
+.pref_content{
+	width: 400px;
+	height: 250px;
+	background-color: #f9f9f9;
+	position: absolute;
+	border:1px solid #dedede;
+	z-index: 100px;
+	bottom: 40px;
+	right: 20px;
+	overflow: hidden;
+	display: none;
+}
+.pref_content-title{
+	height: 30px;
+	background-color: #000;
+	font-size: 18px;
+	text-indent: 5px;
+	color: #fff;
+	line-height: 30px;
+}
+.pref_content-title span{
+	float: right;
+	margin-right: 10px;
+	font-size: 24px;
+}
+.pref_content-title span:hover{
+	color: red;
+	cursor: pointer;
+}
+.pref_content p{
+	line-height: 25px;
+	font-size: 14px;
+	text-indent: 28px;
+	padding-left: 5px;
+	overflow-x:hidden;
+	overflow-y:scroll; 
+	max-height: 210px;
+}
+
+.sertext{
+	width: 498px;
+	max-height: 100px;
+    line-height: 25px;
+    text-indent: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border:1px solid #dedede;
+    float: left;
+    display: none;
+}
+.sertext li a{
+	color: #000;
+}
+.sertext li:hover{
+	background-color: #F2FA67;
+}
