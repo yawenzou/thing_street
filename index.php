@@ -183,13 +183,14 @@ echo "<div id='main'>";
                        // var_dump($building_mc_up[$i][$x]);
                         $shop_up[$i][$x]=$content_json[$i][$j]['shop'];//第$i个街区第$X个建筑的商店信息
                         $shop_up_num[$i][$x]=count($shop_up[$i][$x]);  //第$i个街区第$X个建筑的商店数量
-                        //var_dump($shop_up[$i][$x]);
+                        // var_dump($shop_up[$i][$x]);
+                        // var_dump($shop_up_num[$i][$x]);
                         for ($y=0; $y < $shop_up_num[$i][$x]; $y++) { 
-                            $shop_type_shop_dm[$i][$x][$y]=$content_json[$i][$x]['shop'][$y]['shop_dm'];
-                            $shop_type_up[$i][$x][$y]=$content_json[$i][$x]['shop'][$y]['type'];
-                            $shop_type_mc_up[$i][$x][$y]=$content_json[$i][$x]['shop'][$y]['type_mc'];
+                            $shop_type_shop_dm[$i][$x][$y]=$content_json[$i][$j]['shop'][$y]['shop_dm'];
+                            $shop_type_up[$i][$x][$y]=$content_json[$i][$j]['shop'][$y]['type'];
+                            $shop_type_mc_up[$i][$x][$y]=$content_json[$i][$j]['shop'][$y]['type_mc'];
                             //$shop_type_up_data=$shop_type_up[$i][$x][$y];
-                            //var_dump($y);
+                            //var_dump($content_json[$i][$x]['shop'][$y]);
                             //echo "$shop_type_up_data";
                         }
                     }
@@ -219,13 +220,13 @@ echo "<div id='main'>";
                         $building_type_down[$i][$x]= $content_json[$i][$j]['type']; //获取建筑物类型
                         $location_down[$i][$x]=$content_json[$i][$j]['location'];   //获取建筑物相对街道位置
                         $direction_down[$i][$x]=$content_json[$i][$j]['direction'];   //获取建筑物相对街道方向
-                        $shop_down[$i][$x]=$content_json[$i][$j]['shop'];//第$i个街区第$X个建筑的商店信息
-                        $shop_down_num[$i][$x]=count($shop_down[$i][$x]);  //第$i个街区第$X个建筑的商店数量
+                        $shop_down[$i][$x]=$content_json[$i][$j]['shop'];//第$i个街区第$j个建筑的商店信息
+                        $shop_down_num[$i][$x]=count($shop_down[$i][$x]);  //第$i个街区第$j个建筑的商店数量
                         for ($h=0; $h < $shop_down_num[$i][$x]; $h++) { 
-                            $shop_type_shop_dm[$i][$x][$h]=$content_json[$i][$x]['shop'][$h]['shop_dm'];
-                            $shop_type_down[$i][$x][$h]=$content_json[$i][$x]['shop'][$h]['type'];
-                            $shop_type_mc_down[$i][$x][$h]=$content_json[$i][$x]['shop'][$h]['type_mc'];
-                           // var_dump($shop_type_shop_dm);
+                            $shop_type_shop_dm_down[$i][$x][$h]=$content_json[$i][$j]['shop'][$h]['shop_dm'];
+                            $shop_type_down[$i][$x][$h]=$content_json[$i][$j]['shop'][$h]['type'];
+                            $shop_type_mc_down[$i][$x][$h]=$content_json[$i][$j]['shop'][$h]['type_mc'];
+                            //var_dump($shop_type_down[$i][$x][$h]);
                         }
                     }
                     //echo "$direction_up_num[$i]+";
@@ -316,9 +317,9 @@ echo "<div id='main'>";
                                 echo "<div class='t1'></div>"; 
                                 echo "<div class='t2'>
                                           <div class='build_label' >";
-                                              //var_dump($shop_up_num[$b][$k]);
+                                                  //var_dump($shop_type_up[$b][$k]);
                                               for ($l=0; $l < $shop_up_num[$b][$k]; $l++) { 
-                                                  $shop_type_up_data=$c[$b][$k][$l];
+                                                  $shop_type_up_data=$shop_type_up[$b][$k][$l];
                                                   $shop_type_mc_data=$shop_type_mc_up[$b][$k][$l];
                                                   $shop_type_shop_dm_data=$shop_type_shop_dm[$b][$k][$l];
                                                   $shopimg1="shop_img/".$shop_type_up_data.".png";//商店图标路径
@@ -436,7 +437,7 @@ echo "<div id='main'>";
                                                   for ($l=0; $l < $shop_down_num[$b][$k]; $l++) { 
                                                       $shop_type_down_data=$shop_type_down[$b][$k][$l];
                                                       $shop_type_mc_data=$shop_type_mc_down[$b][$k][$l];
-                                                      $shop_type_shop_dm_data=$shop_type_shop_dm[$b][$k][$l];
+                                                      $shop_type_shop_dm_data=$shop_type_shop_dm_down[$b][$k][$l];
                                                       $shopimg1="shop_img/".$shop_type_down_data.".png";//商店图标路径
                                                        //var_dump($shop_type_mc_data);
                                                        echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
@@ -459,7 +460,7 @@ echo "<div id='main'>";
                                                   for ($l=0; $l < $shop_down_num[$b][$k]; $l++) { 
                                                       $shop_type_down_data=$shop_type_down[$b][$k][$l];
                                                       $shop_type_mc_data=$shop_type_mc_down[$b][$k][$l];
-                                                      $shop_type_shop_dm_data=$shop_type_shop_dm[$b][$k][$l];
+                                                      $shop_type_shop_dm_data=$shop_type_shop_dm_down[$b][$k][$l];
                                                       $shopimg1="shop_img/".$shop_type_down_data.".png";//商店图标路径
 
                                                       echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
@@ -482,8 +483,9 @@ echo "<div id='main'>";
                                                   for ($l=0; $l < $shop_down_num[$b][$k]; $l++) { 
                                                       $shop_type_down_data=$shop_type_down[$b][$k][$l];
                                                       $shop_type_mc_data=$shop_type_mc_down[$b][$k][$l];
-                                                      $shop_type_shop_dm_data=$shop_type_shop_dm[$b][$k][$l];
+                                                      $shop_type_shop_dm_data=$shop_type_shop_dm_down[$b][$k][$l];
                                                       $shopimg1="shop_img/".$shop_type_down_data.".png";//商店图标路径
+                                                      //var_dump($shopimg1);
                                                       echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
 
                                                       echo "<div class='shop-wrap'>";

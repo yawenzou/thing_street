@@ -23,6 +23,7 @@ img{
 	width: 100px;
 	height: 100%;
 	overflow: none;
+	position: relative;
 }
 .t2,.t1{
 	width: auto;
@@ -42,7 +43,7 @@ img{
 }
 .font{
 	position: absolute;
-	top: -10px;
+	top: -16px;
 	text-align: center;
 	font-size: 12px;
 	color: #FFFFFF;	
@@ -131,10 +132,14 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 #timeline{
 	position:relative;
 	background:url("../images/timeline.png");
+	background-position: center center;
+	background-repeat: repeat-x; 
 }
 #mycanvs{
 	padding:0px;
 	background:url("../images/timeline.png");
+	background-repeat: repeat-x; 
+	background-position: center center;
 	margin:0px;
 	z-index:10;
 	position:relative;
@@ -147,6 +152,8 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 	position:relative;
 	left:0px;/**/
 	width:13px;
+	top: 50%;
+    margin-top: -7px;
 }
 #header p{
 	color: #FFF;
