@@ -58,7 +58,7 @@
                         echo "<li class='news'><a href='page/manage-shop.php'>管理店铺</a></li>";
                     }
                     
-                  echo "<li class='news'><a href='###'>消息</a></li>";
+                  // echo "<li class='news'><a href='###'>消息</a></li>";
                   echo "<li class='pers'><a href='page/changemag.php'>".$_SESSION['name']."</a></li>";
                   echo "<li class='drop'><a href='deal/delete-session.php' target='_top'>安全退出</a></li>";
                 }
@@ -79,11 +79,12 @@
             $street_dm=$_SESSION['dm'];
     }/*显示的街区代码*/
     else {
-            $street_dm='3301040001';
+            $street_dm='';
     }
    
     $_SESSION['dm'] = $street_dm;
     $select=mysql_query("select * from relations where street_dm=$street_dm and street_cdm!='00'")or die("选择失败".mysql_error());
+    $select_0=mysql_query("select * from relations where street_dm=$street_dm and street_cdm='00'")or die("选择失败".mysql_error());
     $street_num=mysql_num_rows($select);//街区的数量
     if ($street_num==0) {
         echo "<script>alert('您查询的页面没有建筑，请搜索另外的街道！');history.go(-1);</script>";
@@ -92,6 +93,8 @@
 <?php
    $selectmc=mysql_query("select * from relations where street_dm=$street_dm and street_cdm=$recmd")or die("选择失败".mysql_error());
    $street_mc=mysql_fetch_array($selectmc);
+   $street_mc_0=mysql_fetch_array($select_0);
+   $street_mc__data_0 = $street_mc_0['street_mc'];
 
    echo "<div class='ser'>";
        /*echo "<div class='search-street'>";
@@ -118,7 +121,7 @@
         $address_county_data=$address_county['city_mc'];
         $address_city=mysql_fetch_assoc($address_select_city);
         $address_city_data=$address_city['city_mc'];
-        echo "<p>当前街区：$address_province_data-$address_city_data-$address_county_data-$street_mc_data</p>";   
+        echo "<p>当前街区：$address_province_data-$address_city_data-$address_county_data-$street_mc__data_0-$street_mc_data</p>";   
     echo "</div>";
     $street_speed=$street_mc['speed'];
 
@@ -274,10 +277,14 @@ echo "<div id='main'>";
                             }
                             
                             echo "<div class='tableb'>";
-                            if($building_type_up_data=='20'||$building_type_up_data=='21') {//判断是否为路口
+                            if($building_type_up_data=='31') {
+                                echo "<div class='t3'></div>";
+                            }
+                            elseif($building_type_up_data=='20'||$building_type_up_data=='21') {//判断是否为路口
 
                                 $street_direction_data=$street_direction[$b];
                                 $direction_data=$direction_up[$b][$k];
+                                //$street_mc_data = $street_mc[$b];
 
                                 $street_dm_click=substr($location_up_data,0,strlen($location_up_data)-2);
                                 $street_cmd=substr($location_up_data,strlen($location_up_data)-2,strlen($location_up_data));
@@ -289,29 +296,37 @@ echo "<div id='main'>";
                                 //var_dump($street_dm_click);
                                 //$roadsrc='index'.'.php'.'?street='.$street_dm_click;
                                 echo "<div class='t3 $location_up_data'>";
-                                    echo "<a href= $roadsrc><img src='building_photos/lu.jpeg' width='100px' class='img3'/></a>"; 
+                                //var_dump($building_mc_up_data);
+                                    echo "<a href= $roadsrc><img src='building_photos/lu.jpeg' width='100px' class='img3'/><div class = 'road-name'>$building_mc_up_data</div></a>"; 
                                 echo "</div>";  
                             }
                             elseif($location_up_data=="3"){
                                 echo "<div class='t2'>
-                                          <div class='build_label'>";
-                                          //var_dump($shop_up_num[$b][$k]);
-                                              for ($l=0; $l < $shop_up_num[$b][$k]; $l++) { 
-                                                  $shop_type_up_data=$shop_type_up[$b][$k][$l];
-                                                  $shop_type_mc_data=$shop_type_mc_up[$b][$k][$l];
-                                                  $shop_type_shop_dm_data=$shop_type_shop_dm[$b][$k][$l];
-                                                  $shopimg1="shop_img/".$shop_type_up_data.".png";//商店图标路径
-                                                   echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
-                                                    echo "<div class='shop-wrap'>";
-                                                    include "page/shop.php";
-                                                    echo "</div>";
-
-
-                                              } 
-                                              echo "<span class='build_name'>$building_mc_up_data</span>";
-                                     echo "</div></div>";       
-                                echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'></div>"; 
-                                echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'></div>"; 
+                                    <div class='build_label'>";
+                                    //var_dump($shop_up_num[$b][$k]);
+                                      for ($l=0; $l < $shop_up_num[$b][$k]; $l++) { 
+                                          $shop_type_up_data=$shop_type_up[$b][$k][$l];
+                                          $shop_type_mc_data=$shop_type_mc_up[$b][$k][$l];
+                                          $shop_type_shop_dm_data=$shop_type_shop_dm[$b][$k][$l];
+                                          $shopimg1="shop_img/".$shop_type_up_data.".png";//商店图标路径
+                                          if($building_type_up_data=='1'||$building_type_up_data=='10'||$building_type_up_data=='11'||$building_type_up_data=='12'||$building_type_up_data=='13'||$building_type_up_data=='14') {
+                                            echo "<div class='shopblock' title =$building_mc_up_data ><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                          }
+                                          else{
+                                              echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                              echo "<div class='shop-wrap'>";
+                                              include "page/shop.php";
+                                              echo "</div>";
+                                          }
+                                      } 
+                                    if($building_type_up_data!='1'&&$building_type_up_data!='10'&&$building_type_up_data!='11'&&$building_type_up_data!='12'&&$building_type_up_data!='13'&&$building_type_up_data!='14') {
+                                        echo "<span class='build_name'>$building_mc_up_data</span>";
+                                    }
+                                    echo "</div></div>"; 
+                                    echo "<div class='t1'></div>"; 
+                                    echo "<div class='t1'></div>";       
+                                // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'></div>"; 
+                                // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'></div>"; 
                             }
                             elseif($location_up_data=="2"){ 
                                 echo "<div class='t1'></div>"; 
@@ -324,15 +339,23 @@ echo "<div id='main'>";
                                                   $shop_type_shop_dm_data=$shop_type_shop_dm[$b][$k][$l];
                                                   $shopimg1="shop_img/".$shop_type_up_data.".png";//商店图标路径
 
-                                                  echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
-                                                  echo "<div class='shop-wrap'>";
-                                                    include "page/shop.php";
-                                                    echo "</div>";
+                                                  if($building_type_up_data=='1'||$building_type_up_data=='10'||$building_type_up_data=='11'||$building_type_up_data=='12'||$building_type_up_data=='13'||$building_type_up_data=='14') {
+                                                    echo "<div class='shopblock' title =$building_mc_up_data ><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                  }
+                                                  else{
+                                                      echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                      echo "<div class='shop-wrap'>";
+                                                        include "page/shop.php";
+                                                      echo "</div>";
+                                                  }
 
-                                              } 
-                                                  echo "<span class='build_name'>$building_mc_up_data</span>";
+                                              }
+                                              if($building_type_up_data!='1'&&$building_type_up_data!='10'&&$building_type_up_data!='11'&&$building_type_up_data!='12'&&$building_type_up_data!='13'&&$building_type_up_data!='14') {
+                                                    echo "<span class='build_name'>$building_mc_up_data</span>";
+                                                } 
                                      echo "</div></div>";
-                                echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'></div>"; 
+                                     echo "<div class='t1'></div>"; 
+                                // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'></div>"; 
                             }
                             elseif($location_up_data=="1"){  
                                 echo "<div class='t1'></div>"; 
@@ -345,14 +368,21 @@ echo "<div id='main'>";
                                                   $shop_type_mc_data=$shop_type_mc_up[$b][$k][$l];
                                                   $shop_type_shop_dm_data=$shop_type_shop_dm[$b][$k][$l];
                                                   $shopimg1="shop_img/".$shop_type_up_data.".png";//商店图标路径
-                                                  echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                  if($building_type_up_data=='1'||$building_type_up_data=='10'||$building_type_up_data=='11'||$building_type_up_data=='12'||$building_type_up_data=='13'||$building_type_up_data=='14') {
+                                                    echo "<div class='shopblock' title =$building_mc_up_data ><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                  }
+                                                  else{
+                                                      echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
 
-                                                  echo "<div class='shop-wrap'>";
-                                                    include "page/shop.php";
-                                                    echo "</div>";
+                                                      echo "<div class='shop-wrap'>";
+                                                        include "page/shop.php";
+                                                        echo "</div>";
+                                                    }
 
                                               } 
-                                              echo "<span class='build_name'>$building_mc_up_data</span>";
+                                              if($building_type_up_data!='1'&&$building_type_up_data!='10'&&$building_type_up_data!='11'&&$building_type_up_data!='12'&&$building_type_up_data!='13'&&$building_type_up_data!='14') {
+                                                    echo "<span class='build_name'>$building_mc_up_data</span>";
+                                                }
                                      echo "</div></div>";
                             }
                             echo "</div>";   
@@ -374,7 +404,7 @@ echo "<div id='main'>";
                                 $before="西";
                                 $after="东";
                             }
-                            elseif ($street_direction[$b]==1||$street_direction[$b]==3||$street_direction[$b]==4) {
+                            elseif ($street_direction[$b]==1||$street_direction[$b]==3||$street_direction[$b]==5) {
                                 $before="北";
                                 $after="南";
                             }
@@ -414,23 +444,25 @@ echo "<div id='main'>";
 
                                 echo "<div class='tableb'>";
 
-                                if($building_type_down_data=='20'||$building_type_down_data=='21') {$street_direction_data=$street_direction[$b];
-                                   $direction_data=$direction_up[$b][$k];
-
-                                     $street_dm_click=substr($location_down_data,0,strlen($location_down_data)-2);
-                                        $street_cmd=substr($location_down_data,strlen($location_down_data)-2,strlen($location_down_data));
-                                        if ($street_cmd<10) {
-                                            $street_cmd=str_replace(0,'',$street_cmd);
-                                        }
-                                        //$roadsrc='index'.'.php'.'?street='.$street_dm_click.'&n_c='.$street_cmd;
-                                        $roadsrc='index'.'.php'.'?street='.$street_dm_click.'&n_c='.$street_cmd.'&street_direction_data='.$street_direction_data.'&direction_data='.$direction_data;
-                                        //$roadsrc='index'.'.php'.'?street='.$street_dm_click;
-                                        echo "<div class='t3 $location_down_data'>";
-                                            echo "<a href= $roadsrc><img src='building_photos/lu.jpeg' width='100px' class='img3'/></a>"; 
-                                        echo "</div>";
+                                if($building_type_down_data=='31') {
+                                    echo "<div class='t3'></div>";
+                                }
+                                elseif($building_type_down_data=='20'||$building_type_down_data=='21') {$street_direction_data=$street_direction[$b];
+                                    $direction_data=$direction_up[$b][$k];
+                                    $street_dm_click=substr($location_down_data,0,strlen($location_down_data)-2);
+                                    $street_cmd=substr($location_down_data,strlen($location_down_data)-2,strlen($location_down_data));
+                                    if ($street_cmd<10) {
+                                        $street_cmd=str_replace(0,'',$street_cmd);
+                                    }
+                                    //$roadsrc='index'.'.php'.'?street='.$street_dm_click.'&n_c='.$street_cmd;
+                                    $roadsrc='index'.'.php'.'?street='.$street_dm_click.'&n_c='.$street_cmd.'&street_direction_data='.$street_direction_data.'&direction_data='.$direction_data;
+                                    //$roadsrc='index'.'.php'.'?street='.$street_dm_click;
+                                    echo "<div class='t3 $location_down_data'>";
+                                        echo "<a href= $roadsrc><img src='building_photos/lu.jpeg' width='100px' class='img3'/><div class = 'road-name'>$building_mc_down_data</div></a>"; 
+                                    echo "</div>";
                                     
                                 }
-                                elseif($location_down_data=="3"){
+                                elseif($location_down_data=="1"){
                                     echo "<div class='t2'>
                                               <div class='build_label'>";
                                               
@@ -440,20 +472,28 @@ echo "<div id='main'>";
                                                       $shop_type_shop_dm_data=$shop_type_shop_dm_down[$b][$k][$l];
                                                       $shopimg1="shop_img/".$shop_type_down_data.".png";//商店图标路径
                                                        //var_dump($shop_type_mc_data);
-                                                       echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                      if($building_type_down_data=='1'||$building_type_down_data=='10'||$building_type_down_data=='11'||$building_type_down_data=='12'||$building_type_down_data=='13'||$building_type_down_data=='14') {
+                                                        echo "<div class='shopblock' title =$building_mc_down_data ><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                      }
+                                                      else{
+                                                           echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
 
-                                                       echo "<div class='shop-wrap'>";
-                                                    include "page/shop.php";
-                                                    echo "</div>";
+                                                           echo "<div class='shop-wrap'>";
+                                                            include "page/shop.php";
+                                                            echo "</div>";
+                                                        }
 
                                                   } 
-                                                  echo "<span class='build_name'>$building_mc_down_data</span>";
+                                                  if($building_type_down_data!='1'&&$building_type_down_data!='10'&&$building_type_down_data!='11'&&$building_type_down_data!='12'&&$building_type_down_data!='13'&&$building_type_down_data!='14') {
+                                                      echo "<span class='build_name'>$building_mc_down_data</span>";
+                                                  }
                                          echo "</div></div>";       
-                                    echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>"; 
-                                    echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>"; 
+                                    echo "<div class='t1'><div></div></div>"; 
+                                    echo "<div class='t1'><div></div></div>";
                                 }
                                 elseif($location_down_data=="2"){ 
-                                    echo "<div class='t1'><div></div></div>"; 
+                                    echo "<div class='t1'></div>"; 
+                                    // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>"; 
                                     echo "<div class='t2'>
                                               <div class='build_label'>";
 
@@ -463,20 +503,29 @@ echo "<div id='main'>";
                                                       $shop_type_shop_dm_data=$shop_type_shop_dm_down[$b][$k][$l];
                                                       $shopimg1="shop_img/".$shop_type_down_data.".png";//商店图标路径
 
-                                                      echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                      if($building_type_down_data=='1'||$building_type_down_data=='10'||$building_type_down_data=='11'||$building_type_down_data=='12'||$building_type_down_data=='13'||$building_type_down_data=='14') {
+                                                        echo "<div class='shopblock' title =$building_mc_down_data ><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                      }
+                                                      else{
+                                                          echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
 
-                                                      echo "<div class='shop-wrap'>";
-                                                    include "page/shop.php";
-                                                    echo "</div>";
+                                                          echo "<div class='shop-wrap'>";
+                                                        include "page/shop.php";
+                                                        echo "</div>";
+                                                      }
 
                                                   } 
-                                                  echo "<span class='build_name'>$building_mc_down_data</span>";
+                                                  if($building_type_down_data!='1'&&$building_type_down_data!='10'&&$building_type_down_data!='11'&&$building_type_down_data!='12'&&$building_type_down_data!='13'&&$building_type_down_data!='14') {
+                                                      echo "<span class='build_name'>$building_mc_down_data</span>";
+                                                  }
                                          echo "</div></div>";
-                                    echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>"; 
+                                    echo "<div class='t1'><div></div></div>"; 
                                 }
-                                elseif($location_down_data=="1"){  
-                                    echo "<div class='t1'><div></div></div>"; 
-                                    echo "<div class='t1'><div></div></div>"; 
+                                elseif($location_down_data=="3"){  
+                                    echo "<div class='t1'></div>"; 
+                                    echo "<div class='t1'></div>"; 
+                                    // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>"; 
+                                    // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>";  
                                      echo "<div class='t2'>
                                               <div class='build_label'>";
 
@@ -486,14 +535,21 @@ echo "<div id='main'>";
                                                       $shop_type_shop_dm_data=$shop_type_shop_dm_down[$b][$k][$l];
                                                       $shopimg1="shop_img/".$shop_type_down_data.".png";//商店图标路径
                                                       //var_dump($shopimg1);
-                                                      echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                      if($building_type_down_data=='1'||$building_type_down_data=='10'||$building_type_down_data=='11'||$building_type_down_data=='12'||$building_type_down_data=='13'||$building_type_down_data=='14') {
+                                                        echo "<div class='shopblock' title =$building_mc_down_data ><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
+                                                      }
+                                                      else{
+                                                          echo "<div class='shopblock'><span class='font'>$shop_type_mc_data</span><img class='imglabel' src=$shopimg1 width='50px' height='50px'/></div>";//店铺图标显示
 
-                                                      echo "<div class='shop-wrap'>";
-                                                    include "page/shop.php";
-                                                    echo "</div>";
+                                                          echo "<div class='shop-wrap'>";
+                                                        include "page/shop.php";
+                                                        echo "</div>";
+                                                    }
 
                                                   } 
-                                                  echo "<span class='build_name'>$building_mc_down_data</span>";
+                                                  if($building_type_down_data!='1'&&$building_type_down_data!='10'&&$building_type_down_data!='11'&&$building_type_down_data!='12'&&$building_type_down_data!='13'&&$building_type_down_data!='14') {
+                                                      echo "<span class='build_name'>$building_mc_down_data</span>";
+                                                  }
                                          echo "</div></div>";
                                 }
                          

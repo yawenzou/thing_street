@@ -1,4 +1,4 @@
-/**/
+/*     */
  var csj_data;
  $.ajax({
  	cache: false,
@@ -245,7 +245,7 @@ function apla(i,a){
 		var n_c;
 		$.ajax({
 		 	cache: false,
-		 	async: false,
+		 	async: true,
 		 	type: "get",
 		 	url: "index.php?n_c="+i+"&street_direction_data='none'&direction_data='none'",
 		 	dataType:"html",
@@ -261,6 +261,7 @@ function contentplay(){//框架里的页面根据横坐标比例偏移动画
 	sumwidfun();
 	var y=0;
 	var m=factx;
+	//console.log(factx);
 	for(var k=0;k<n;k++){
 		if(k==0){   
 			if((m>=0&&m<=sumwid[0])){
@@ -343,7 +344,7 @@ function ChangeBackforward(num){
 
 function changeimg(){
 	var leftimg;
-	//alert(Number);
+	//alert(sumwid);
 	if(street_dir_data=='none'||dir_data=='none'||dir_data=='10'||street_dir_data=='10'){//alert(street_dir_data+dir_data);
 		return;
 		//leftimg=sumwid[Number-2];
@@ -358,7 +359,7 @@ function changeimg(){
 			}	
 		}
 		else{
-		    if ((street_dir_data=='1'||street_dir_data=='3'||street_dir_data=='5')&&(dir_data=='2'||dir_data=='3'||dir_data=='4')) {
+		    if (((street_dir_data=='1'||street_dir_data=='3'||street_dir_data=='5')&&(dir_data=='2'||dir_data=='3'||dir_data=='4'))||((street_dir_data=='0'||street_dir_data=='2'||street_dir_data=='4')&&(dir_data=='1'||dir_data=='5'||dir_data=='6'))) {
 				leftimg=sumwid[Number-1];
 			}
 			else{
@@ -368,15 +369,17 @@ function changeimg(){
 	}
 	//alert(leftimg);
 	$("#timeline .inside img").animate({left:leftimg},1);
+	factx = leftimg;
+	contentplay();
 }
 
 function Adddirection(){
-$(".cont1").append("<div id='l1' class='left' style='color:red;height:100px;width:100px;background:url(images/dirl.png);position:fixed;left:20px;top:50%;margin-top:-50px;'>左走</div>");
-$(".cont1").append("<div id='r1' class='right' style='color:red;height:100px;width:100px;background:url(images/dir.png);position:fixed;right:20px;top:50%;margin-top:-50px;'>右走</div>");
+$(".cont1").append("<div id='l1' class='left' style='color:red;height:100px;width:100px;background:url(images/dirl.png);position:fixed;left:20px;top:50%;margin-top:-50px;'></div>");
+$(".cont1").append("<div id='r1' class='right' style='color:red;height:100px;width:100px;background:url(images/dir.png);position:fixed;right:20px;top:50%;margin-top:-50px;'></div>");
 $(".cont1").append("<div id='r2' class='right' style='color:red;height:100px;width:100px;position:fixed;right:50px;top:50%;margin-top:-50px;'>这条街区已经走到底啦，点击进入下一街区！</div>");
 $(".cont1").append("<div id='l2' class='left' style='color:red;height:100px;width:100px;position:fixed;left:50px;top:50%;margin-top:-50px;'>这条街区已经走到头啦，点击进入上一街区！</div>");
-$(".cont1").append("<div id='stopL' class='stop' style='color:red;height:100px;width:100px;background:url(images/stop.png);position:fixed;left:20px;top:50%;margin-top:-50px;'>暂停</div>");
-$(".cont1").append("<div id='stopR' class='stop' style='color:red;height:100px;width:100px;background:url(images/stop.png);position:fixed;right:20px;top:50%;margin-top:-50px;'>暂停</div>");
+$(".cont1").append("<div id='stopL' class='stop' style='color:red;height:100px;width:100px;background:url(images/stop.png);position:fixed;left:20px;top:50%;margin-top:-50px;'></div>");
+$(".cont1").append("<div id='stopR' class='stop' style='color:red;height:100px;width:100px;background:url(images/stop.png);position:fixed;right:20px;top:50%;margin-top:-50px;'></div>");
 }
 
 function streetplay(){
