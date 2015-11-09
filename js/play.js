@@ -163,9 +163,9 @@ $(document).ready(function(){
 
     //changeroad();
 	sumwidfun();
-	changeimg();
 	Adddirection();
     streetplay();
+	changeimg();
 })
 
 window.onresize = function() {
@@ -200,6 +200,7 @@ function chag(nac){
 
 function change(nac,j){
 	//$("#timeline .inside img").css("left",nac); 
+	//getUrlData(j);
 	var n_c;
 	$.ajax({
 	 	cache: false,
@@ -235,25 +236,32 @@ function sumwidfun(){
 		}
 	}
 }
-
+$
 function apla(i,a){
 	i++;
-	$('.a'+i).click(function(){
+	$('.a'+i).on('click', function(){
 		setnunber(i);
 		introStop();
 		var pos=a;	
 		var n_c;
-		$.ajax({
-		 	cache: false,
-		 	async: true,
-		 	type: "get",
-		 	url: "index.php?n_c="+i+"&street_direction_data='none'&direction_data='none'",
-		 	dataType:"html",
-		 	success: function (data) {
-		 		$("body").html(data);
-		 		$("#timeline .inside img").css("left",pos);
-		 	}
-	    });
+		getUrlData(i);
+		//var url = "index.php?n_c="+i+"&street_direction_data=10&direction_data=10";
+		//window.location.href=url;
+		//$("#timeline .inside img").css("left",pos);
+		// $.ajax({
+		//  	cache: false,
+		//  	async: true,
+		//  	type: "get",
+		//  	url: "index.php?n_c="+i+"&street_direction_data='none'&direction_data='none'",
+		//  	dataType:"html",
+		//  	success: function (data) {
+		//  		// var dealdata1 = data.split("<body>")[1];
+		//  		// var dealdata2 = dealdata1.split("</body>")[0];
+		//  		$("body").html(data);
+		//  		$("#timeline .inside img").css("left",pos);
+		//  		streetplay();
+		//  	}
+	 //    });
 	})
 }
 
@@ -323,9 +331,11 @@ function Stopall(){
 
 function ChangeForward(num){
 	if(num<n){
-	var k=num+1;
-	//alert(k);
-	window.location.href = "index"+".php"+"?n_c="+k;}
+		var k=num+1;
+		//alert(k);
+		getUrlData(k)
+		//window.location.href = "index"+".php"+"?n_c="+k;
+    }
 	else{
 		alert("抱歉，后面没有街区了！");
 	}
@@ -334,12 +344,28 @@ function ChangeForward(num){
 function ChangeBackforward(num){
 	if(num>1){
 		var k=num-1;
-		window.location.href = "index"+".php"+"?n_c="+k;
+		getUrlData(k)
+		//window.location.href = "index"+".php"+"?n_c="+k;
 	}
 	else{
 		//window.location.href = "middle"+".php"+"n_c="+1;
 	    alert("抱歉，前面没有街区了！");
 	}
+}
+
+function getUrlData(k) {
+	var url = window.location.href;
+	var urlArr = url.split('&');
+	var s = urlArr[0].split('=')[1];
+	var s_d_d = urlArr[2].split('=')[1];
+	var d_d = urlArr[3].split('=')[1];
+	if ((s_d_d=='1'||s_d_d=='3'||s_d_d=='5')&&(d_d=='2'||d_d=='3'||d_d=='4')) {
+		d_d = 1;
+	}
+	else if ((s_d_d=='0'||s_d_d=='2'||s_d_d=='4')&&(d_d=='1'||d_d=='5'||d_d=='6')) {
+		d_d = 2;
+	}
+	window.location.href = "index.php?street="+s+"&n_c="+k+"&street_direction_data="+s_d_d+"&direction_data="+d_d;
 }
 
 function changeimg(){
@@ -366,11 +392,11 @@ function changeimg(){
 				leftimg=sumwid[Number-2];
 			} 
 	    }
-	}
 	//alert(leftimg);
 	$("#timeline .inside img").animate({left:leftimg},1);
 	factx = leftimg;
 	contentplay();
+	}
 }
 
 function Adddirection(){
