@@ -400,12 +400,12 @@ function changeimg(){
 }
 
 function Adddirection(){
-$(".cont1").append("<div id='l1' class='left' style='color:red;height:100px;width:100px;background:url(images/dirl.png);position:fixed;left:20px;top:50%;margin-top:-50px;'></div>");
-$(".cont1").append("<div id='r1' class='right' style='color:red;height:100px;width:100px;background:url(images/dir.png);position:fixed;right:20px;top:50%;margin-top:-50px;'></div>");
-$(".cont1").append("<div id='r2' class='right' style='color:red;height:100px;width:100px;position:fixed;right:50px;top:50%;margin-top:-50px;'>这条街区已经走到底啦，点击进入下一街区！</div>");
-$(".cont1").append("<div id='l2' class='left' style='color:red;height:100px;width:100px;position:fixed;left:50px;top:50%;margin-top:-50px;'>这条街区已经走到头啦，点击进入上一街区！</div>");
-$(".cont1").append("<div id='stopL' class='stop' style='color:red;height:100px;width:100px;background:url(images/stop.png);position:fixed;left:20px;top:50%;margin-top:-50px;'></div>");
-$(".cont1").append("<div id='stopR' class='stop' style='color:red;height:100px;width:100px;background:url(images/stop.png);position:fixed;right:20px;top:50%;margin-top:-50px;'></div>");
+$(".cont1").append("<div id='l1' class='left'></div>");
+$(".cont1").append("<div id='r1' class='right'></div>");
+$(".cont1").append("<div id='r2' class='right'>点击进入下一街区</div>");
+$(".cont1").append("<div id='l2' class='left'>点击进入上一街区</div>");
+$(".cont1").append("<div id='stopL' class='stop'></div>");
+$(".cont1").append("<div id='stopR' class='stop'></div>");
 }
 
 function streetplay(){

@@ -8,7 +8,7 @@
     $seltuser=mysql_query("select * from user where nicknames='$nicknames'")or die(mysql_error());
     $user_id=mysql_fetch_assoc($seltuser);
     $user_id_data=$user_id['id'];
-    $shop_mc=$_POST["shop_mc"];
+    $shop_dm=$_POST["shop_dm"];
     $telno=$_POST["telno"];
     $typea=$_POST["type"];
     $shop_state=$_POST["shop_state"];
@@ -96,10 +96,15 @@
                 $hash .= $chars[mt_rand(0, $max)];   
             }   
         return $hash;   
-    }  
+    } 
+    $photo_num = $n; 
     for ($i=0; $i < $n; $i++) {
     	$j=$i+1; 
     	$nameimg="img".$j;  
+        if(!$_FILES["$fileNameImg"]['name']) {
+            $photo_num--;
+            continue;
+        }
 
 	    if(!in_array(strtolower(fileext($_FILES["$nameimg"]['name'])),$type))  //判断文件类型 
 	    {   
@@ -124,24 +129,21 @@
 	        }
 	    }   
     } 
-    if(!$shop_mc){
-        echo "请输入店名称";
-    }
-    else if(!$telno){
+    if(!$telno){
         echo "请输入联系方式";
     }
     else if(!$type){
         echo "请输入类型";
     }
-    else if(!$photos){
+    else if(!$photos&&($photo_num)){
         echo "图片上传失败";
     }
     else{
         $photos=substr($photos,0,-1);
-        $select1=mysql_query("select * from shopowner where user_id='$user_id_data' and pass='1'")or die("选择失败".mysql_error());
-        $result1= mysql_fetch_assoc($select1);
-        $shop_id= $result1['shop_id'];
-        $seltuser=mysql_query("update shop set shop_mc='$shop_mc',telno='$telno',type='$typea',shop_state='$shop_state',photos='$photos' where shop_dm='$shop_id'")or die("插入数据失败".mysql_error());
+        // $select1=mysql_query("select * from shopowner where user_id='$user_id_data' and pass='1'")or die("选择失败".mysql_error());
+        // $result1= mysql_fetch_assoc($select1);
+        // $shop_id= $result1['shop_id'];
+        $seltuser=mysql_query("update shop set telno='$telno',type='$typea',shop_state='$shop_state',photos='$photos' where shop_dm='$shop_dm'")or die("插入数据失败".mysql_error());
         echo "修改店铺信息成功！";
     }
 ?>

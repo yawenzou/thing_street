@@ -48,8 +48,21 @@
 	        <div class="modify-mag J_click">
 	        	<form method="post" name="modify-msg" id="modify-msg" action="../deal/modify-msg.php" enctype="multipart/form-data">
 	                <div class="line">
-						<div class="label">店铺名称: &nbsp;</div>
-						<input type="text" class="text-input" name="shop_mc" id="shop_mc"/>
+						<div class="label">选择店铺: &nbsp;</div>
+						<select class="text-input" name="shop_dm" id="shop_dm">
+						<?php
+							$select_shopowner = mysql_query("select shop_id from shopowner where user_id = $user_id and pass = 1") or die(mysql_error());
+							$select_shopowner_num = mysql_num_rows($select_shopowner);
+							for ($i=0; $i < $select_shopowner_num; $i++) { 
+								$select_shopowner_result = mysql_fetch_assoc($select_shopowner);
+								$owner_shop_id = $select_shopowner_result[shop_id];
+								$select_shop = mysql_query("select * from shop where shop_dm = $owner_shop_id") or die(mysql_error());
+								$select_shop_result = mysql_fetch_assoc($select_shop);
+								var_dump($select_shop_result);
+								echo "<option value= $owner_shop_id >$select_shop_result[shop_mc]</option>";
+							}
+						?>
+						</select>
 						<div class="label">联系方式: &nbsp;</div>
 						<input type="text" class="text-input" name="telno" id="telno"/>
 					</div>

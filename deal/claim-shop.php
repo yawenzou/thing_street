@@ -92,6 +92,8 @@
 		            if($uploadfilea&&$uploadfileb){   
 		                $seltuser=mysql_query("update user set name='$name',cellphone='$cellphone',identity_card='$identity_card',u_type='1' where id=$user_id_data;");
 		                $selt_shopowner=mysql_query("insert into shopowner (shop_id,user_id,business_license,organization_code,ownertime) values ('$shop_id','$user_id_data','$namea','$nameb','$ownertime')")or die(mysql_error());
+		                // var_dump($selt_shopowner);
+		                // var_dump($seltuser);
 		                echo "我们将会尽快为你验证，请等待通知！";
 		            }
 		        }   

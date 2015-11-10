@@ -64,9 +64,9 @@
                 }
             }
         }
-        var_dump($photos);
         $photos=substr($photos,0,-1);     
         $insertComment = mysql_query("insert into comment (shop_id, user_id, c_content, c_photo, c_time, c_type, feedback) values ('$shop_id', '$user_id_data', '$c_content', '$photos', '$c_time', '$c_type', '$feedback')" )or die(mysql_error());
+        var_dump($insertComment);
         
         if($insertComment){
             echo "$successStr";
