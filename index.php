@@ -594,6 +594,7 @@ echo "<div id='main'>";
 <?php mysql_close($link); ?>
 <script type="text/javascript">
     bindevent();  
+
 </script>
 </body>
 </html>

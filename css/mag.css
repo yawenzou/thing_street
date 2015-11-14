@@ -1,13 +1,13 @@
 *{margin: 0px;padding:0px;text-decoration: none;list-style-type: none;}
-html,body{height: 100%;font-size: 14px;}
-.wrap{width: 100%;height: 100%;background: url("../images/background.png") no-repeat 100% 100%;}
+html,body{height: 100%;font-size: 14px;font-family"Microsoft YaHei";}
+.wrap{width: 100%;height: 100%;background-color: #ececec;min-height: 600px;}
 .logo{width: 170px;height: 60px;vertical-align: middle;background-color: #F92672;position: absolute;top: 0px;left: 0px;}
 .w100{width: 100px;}
 .w30{width: 30px;}
 .header{
 	height: 30px;
 	width: 100%;
-	background-color: #EFEFEF;
+	background-color: #749263;
 	font-size: 14px;
 	line-height: 30px;
 }
@@ -23,7 +23,7 @@ html,body{height: 100%;font-size: 14px;}
     display: inline-block;
 }
 .header li a{
-	color: #000;
+	color: #fff;
 }
 .footer{
 	height: 30px;
@@ -41,65 +41,71 @@ html,body{height: 100%;font-size: 14px;}
 .magl-20{margin-left: -20px;}
 
 /*个人信息完善页面*/
-.psd-wrap{width: 860px;height: 600px;background: url("../images/registerpg.png") no-repeat 100% 100%;margin: 0 auto;padding-left: 70px;padding-right: 70px;}
+.psd-wrap{width: 860px;height: 600px;background-color: #fff;margin: 100px auto;padding-left: 70px;padding-right: 70px;border: 3px solid #749263;border-radius: 5px;}
 .psd-teb{overflow: hidden;_zoom:1;height: 45px;line-height: 45px;padding-top: 40px;padding-left: 40px;}
 .psd-teb .teb-mod{float: left;width:150px;text-align:center;overflow: hidden;_zoom:1;font-size: 24px;font-weight: bold;display: inline-block;cursor: pointer;border: 1px solid #dbdbdb;height: 40px;line-height: 40px;color: #dbdbdb;}
 
 .psd-bd,.base-mag{width: 500px;margin: 30px auto;height: 30px;}
 .psd-bd{display: none;}
 .line{width: 100%;overflow: hidden;margin-top: 15px;}
-.label,.text-input{display: inline-block;float: left;height: 30px;line-height: 30px;font-size: 14px;}
+.label,.text-input{display: inline-block;float: left;height: 35px;line-height: 35px;font-size: 14px;}
 .label{width: 100px;text-align: right;padding-right: 5px;}
-.text-input{width: 250px;text-indent:5px;border: 1px #ABADB3 solid;}
-.text-input:hover,.text-input:focus{border: #5794BF 1px solid;}
+.text-input{width: 250px;text-indent:5px;border: 1px #d7d7d7 solid;border-radius: 3px;}
+.text-input:hover,.text-input:focus{border: #d7d7d7 1px solid;}
 a{color: #0657B2;}
 a:hover{color: #FC6D02;cursor: pointer;}
-.psdnow{width: 250px;height: 50px;background-color: #CCCCCC;font-size: 24px;line-height: 50px;text-align: center;display: inline-block;float: left;font-weight: bold;color: #434341;}
-.psded:hover{background-color: #317EF3;}
-.psded{background-color: #3385FF;cursor: pointer;}
+.psdnow{width: 250px;height: 50px;background-color: #CCCCCC;font-size: 24px;line-height: 50px;text-align: center;display: inline-block;float: left;font-weight: bold;color: #e5e5e5;}
+.psded:hover{background-color: #83af6a;}
+.psded{background-color: #749263;cursor: pointer;}
 
 label{height: 30px;line-height: 30px;}
 .avatar{width: 250px;height: 30px;}
 .avatar-img{width: 128px;height: 128px;opacity: 0;filter: alpha(opacity=0);}
-.psd-teb .click{color: #3DA3EF;border: 1px solid #3DA3EF;}
+.psd-teb .click{color: #749263;border: 1px solid #749263;}
 
 .confirm{width: 100px;height: 30px;line-height: 30px;font-weight: 24px;}
 
 
 /*登陆界面*/
-.logon-wrap{background: url("../images/login.png") no-repeat;width: 294px;height: 249px;position: absolute;top: 150px;right: 300px;padding:40px 30px;}
-.labeld,.loginput{display: inline-block;float: left;height: 30px;line-height: 30px;}
+.logon-title{font-size: 32px;height: 60px;color: #739166;line-height: 60px;position: absolute;left: 50%;margin-left: -200px;width: 400px;top: 50%;margin-top: -215px;}
+.logon-wrap{background-color: #fff;width: 398px;height: 308px;border: 1px solid #d7d7d7;position: absolute;left: 50%;margin-left: -200px;top: 50%;margin-top: -150px;right: 300px;}
+.logon-wrap-title {width: 100%;height: 51px; line-height: 51px;text-indent: 30px;font-size:16px;color:#313131;border-bottom: 1px solid #d7d7d7; }
+.logon-wrap form{padding:15px 30px; color: #313131;}
+.labeld,.loginput{display: inline-block;float: left;height: 35px;line-height: 35px;}
 .labeld{width: 50px;text-align: right;}
-.loginput{width: 200px;padding-left: 5px;border: 1px #ABADB3 solid;}
-.loginput-input:hover,.loginput-input:focus{border: #5794BF 1px solid;}
-.code{width: 200px;height: 35px;background-color: #3385FF;display: inline-block;float: left;font-size: 16px;font-weight: bold;text-align: center;line-height: 35px;}
-.code:hover{background-color: #317EF3;cursor: pointer;}
+.loginput{margin-left: 10px;width: 220px;padding-left: 5px;border: 1px #d7d7d7 solid;border-radius: 3px;}
+.loginput-input:hover,.loginput-input:focus{border: #749263 1px solid;}
+.code{width: 200px;height: 35px;background-color: #749263;display: inline-block;float: left;font-size: 16px;font-weight: bold;text-align: center;line-height: 35px;border-radius: 5px;}
+.code:hover{background-color: #83af6a;cursor: pointer;;}
+.line-other{margin-left: 10px;height: 30px;line-height: 30px;}
+.line-02{margin: 10px;overflow: hidden;}
 .fogetcode{width: 80px;float: left;display: inline-block;}
-.fogetcode a{color: #0657B2;}
+.fogetcode a{color: #749263;}
 .register{width: 120px;float: left;display: inline-block;}
-.register a{color: #0657B2;}
-.fogetcode a:hover,.register a:hover{color: #FC6D02;}
+.register a{color: #749263;}
+.fogetcode a:hover,.register a:hover{color: #83af6a;}
 
 
 
 /*注册界面*/
-.register-wrap{width: 860px;height: 600px;background: url("../images/registerpg.png") no-repeat 100% 100%;margin: 0 auto;padding-left: 70px;padding-right: 70px;}
+.register-title{width: 1000px;left: 50%;margin-left:-500px;top: 60px;position: absolute;}
+.register-wrap{width: 860px;height: 600px;background-color: #fff;margin: 100px auto;padding-left: 70px;padding-right: 70px;border: 3px solid #749263;border-radius: 5px;}
 .register-teb{overflow: hidden;_zoom:1;height: 45px;line-height: 45px;padding-top: 40px;padding-left: 40px;}
-.register-teb p{float: right;display: block;padding-top:10px;font: 400 16px/30px simsun;color: #010101;}
+.register-teb p{float: right;display: block;padding-top:10px;font: 400 16px/30px simsun;color: #313131;}
 .register-teb .teb-mod{float: left;width:200px;overflow: hidden;_zoom:1;font-size: 24px;font-weight: bold;display: inline-block;}
 .register-hd{height: 45px;margin-top: 30px;line-height: 45px;font-size: 20px;clear: both;overflow: hidden;}
-.register-hd .underway{background-color: #BDC504;color: #fff;}
-.register-hd span{background-color: #EEEFD2;border: 1px solid #BFB3BF;display: inline-block;float: left;width: 200px;height: 40px;color: #9E9F8C;text-align: center;}
+.register-hd .underway{background-color: #749263;color: #fff;}
+.register-hd span{background-color: #BFE6B9;border: 1px solid #BFB3BF;display: inline-block;float: left;width: 200px;height: 40px;color: #9E9F8C;text-align: center;}
 .register-bd{width: 500px;margin: 30px auto;height: 30px;}
-.label,.register-input{display: inline-block;float: left;height: 30px;line-height: 30px;}
+.label,.register-input{display: inline-block;float: left;height: 35px;line-height: 35px;}
 .label{width: 100px;text-align: right;padding-right: 5px;}
-.register-input{width: 250px;padding-left: 5px;border: 1px #ABADB3 solid;}
-.register-input:hover,.register-input:focus{border: #5794BF 1px solid;}
+.register-input{width: 250px;padding-left: 5px;border: 1px #d7d7d7 solid;border-radius: 3px;}
+.register-input:hover,.register-input:focus{border: #749263 1px solid;}
 .w100{width: 100px;}
-a{color: #0657B2;}
-a:hover{color: #FC6D02;cursor: pointer;}
-.registernow{width: 250px;height: 50px;background-color: #CCCCCC;font-size: 24px;line-height: 50px;text-align: center;display: inline-block;float: left;font-weight: bold;color: #434341;}
-.registered{background-color: #BDC504;cursor: pointer;}
+a{color: #749263;}
+a:hover{color: #83af6a;;cursor: pointer;}
+.registernow{width: 250px;height: 50px;background-color: #CCCCCC;font-size: 24px;line-height: 50px;text-align: center;display: inline-block;float: left;font-weight: bold;color: #e5e5e5;}
+.registered{background-color: #749263;cursor: pointer;}
 
 .register-protocol{width: 600px;min-height: 200px;position: fixed;top:50px;margin: 10px auto;border: 1px #ededed solid;display: none;}
 .protocol-title{width: 100%;height: 30px;background-color: #F4F4F4;line-height: 30px;}
@@ -132,9 +138,10 @@ a:hover{color: #FC6D02;cursor: pointer;}
 	width: 350px;
 	height: 50px;
 	line-height: 25px;
-	border:1px solid #ABADB3;
+	border:1px solid #d7d7d7;
+	resize: none;
 }
-.textarea-input:hover,.textarea-input:focus{border: #5794BF 1px solid;}
+.textarea-input:hover,.textarea-input:focus{border: #749263 1px solid;}
 
 
 
@@ -174,7 +181,7 @@ a:hover{color: #FC6D02;cursor: pointer;}
 	display: none;
 }
 .reply-btn,.pass-btn{
-	background-color: #7A7AE4;
+	background-color: #749263;
 	float: right;
 }
 .reply-btn,.pass-btn,.submit-reply-btn{
@@ -187,13 +194,21 @@ a:hover{color: #FC6D02;cursor: pointer;}
 	cursor: pointer;
 }
 .submit-reply-btn{
-	background-color: #585877;
+	border: 1px solid #749263;
 	margin-bottom: 5px;
 	display: inline-block;
 	resize: none;
+	color: #749263;
+}
+.submit-reply-btn:hover{
+	background-color: #83af6a;
+	color: #fff;
 }
 .pass-btn{
 	margin: 0px 5px;
+}
+.pass-btn-click{
+	background-color: #959595;
 }
 .reply-content-title{
 	height: 30px;
@@ -204,6 +219,8 @@ a:hover{color: #FC6D02;cursor: pointer;}
 .reply-textarea{
 	width: 660px;
 	height: 50px;
+	border:1px solid #d7d7d7;
+	resize: none;
 }
 .reply-form{
 	margin-left: 100px;
@@ -214,4 +231,14 @@ a:hover{color: #FC6D02;cursor: pointer;}
 	margin-top: -8px;
 	display: none;
 	border:1px solid #dedede;
+}
+
+.error{color: red;}
+
+.message_c_sad{
+	width: 600px;
+	height: 400px;
+	border: 3px solid #749263;
+	border-radius: 5px;
+	margin: 20px auto;
 }

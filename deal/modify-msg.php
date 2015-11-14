@@ -10,6 +10,7 @@
     $user_id_data=$user_id['id'];
     $shop_dm=$_POST["shop_dm"];
     $telno=$_POST["telno"];
+    $shopName=$_POST["shopName"];
     $typea=$_POST["type"];
     $shop_state=$_POST["shop_state"];
     //r_dump($shop_state);
@@ -100,16 +101,16 @@
     $photo_num = $n; 
     for ($i=0; $i < $n; $i++) {
     	$j=$i+1; 
-    	$nameimg="img".$j;  
+    	$nameimg="img".$j; 
+        $fileNameImg = 'img'.$j; 
         if(!$_FILES["$fileNameImg"]['name']) {
             $photo_num--;
             continue;
         }
-
 	    if(!in_array(strtolower(fileext($_FILES["$nameimg"]['name'])),$type))  //判断文件类型 
 	    {   
 	        $text=implode(",",$type); 
-	        echo "您只能上传以下类型文件: ",$text,"<br>";   
+            $echo_massage = "您只能上传以下类型文件: ,".$text.",<br>"; 
 	    }
 	    else{
 	    	//生成目标文件的文件名
@@ -124,34 +125,43 @@
 	        if (move_uploaded_file($_FILES[$nameimg]['tmp_name'],$uploadfile[$j])){
 	            if($uploadfile[$j]){   
 	            	$photos=$photos.$name[$j].",";
-
 	            }
 	        }
 	    }   
     } 
+    if(!$shopName){
+        $echo_massage = "请输入商店名称";
+    }
     if(!$telno){
-        echo "请输入联系方式";
+        $echo_massage = "请输入联系方式";
     }
     else if(!$type){
-        echo "请输入类型";
+        $echo_massage = "请输入类型";
     }
     else if(!$photos&&($photo_num)){
-        echo "图片上传失败";
+        $echo_massage = "图片上传失败";
     }
     else{
         $photos=substr($photos,0,-1);
-        // $select1=mysql_query("select * from shopowner where user_id='$user_id_data' and pass='1'")or die("选择失败".mysql_error());
-        // $result1= mysql_fetch_assoc($select1);
-        // $shop_id= $result1['shop_id'];
-        $seltuser=mysql_query("update shop set telno='$telno',type='$typea',shop_state='$shop_state',photos='$photos' where shop_dm='$shop_dm'")or die("插入数据失败".mysql_error());
-        echo "修改店铺信息成功！";
+        if($photos) {
+            $seltuser=mysql_query("update shop set shop_mc='$shopName',telno='$telno',type='$typea',shop_state='$shop_state',photos='$photos' where shop_dm='$shop_dm'")or die("插入数据失败".mysql_error());   
+        }
+        else{
+             $seltuser=mysql_query("update shop set shop_mc='$shopName',telno='$telno',type='$typea',shop_state='$shop_state' where shop_dm='$shop_dm'")or die("插入数据失败".mysql_error());  
+        }
+        if($seltuser){
+            $echo_massage =  "修改店铺信息成功！";
+        }
     }
 ?>
-<div class="message_c_sad">
+<div class="message_c_sad" style = 'width: 600px;height: 400px;border: 3px solid #749263;border-radius: 5px;margin: 20px auto;padding: 20px;'>
+    <?php 
+        echo "$echo_massage"; 
+    ?>
     <p>5秒后将会为您跳转，如果您的浏览器没有自动跳转，请<a href="../page/manage-shop.php">点击这里</a></p>
 </div>
 <script>
-setTimeout(function(){
+ setTimeout(function(){
        window.location.href='../page/manage-shop.php';
  },5000)
 

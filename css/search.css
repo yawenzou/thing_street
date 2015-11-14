@@ -1,9 +1,10 @@
 /*搜索页面*/
 *{margin: 0px;padding:0px;text-decoration: none;list-style-type: none;}
+body{background-color: #ececec;}
 .header{
 	height: 30px;
 	width: 100%;
-	background-color: #EFEFEF;
+	background-color: #749263;
 	font-size: 14px;
 	line-height: 30px;
 }
@@ -19,7 +20,7 @@
     display: inline-block;
 }
 .header li a{
-	color: #000;
+	color: #fff;
 }
 .mid{
 	width: 600px;
@@ -31,7 +32,6 @@
 	width: 170px;
 	height: 60px;
 	vertical-align: middle;
-	background-color: #89B9EA;
 	margin-bottom: 15px;
 	position: relative;
 }
@@ -79,17 +79,18 @@
 .ser{
 	width: 498px;
 	height: 38px;
-    border: 1px solid #938E8E;
+    border: 1px solid #749263;
     display: inline-block;
     line-height: 38px;
     position: relative;
     text-indent: 5px;
+    background-color: #ececec;
 }
 .ser:hover{
-	border: 1px solid #4791FF;
+	border: 1px solid #749263;
 }
 .ser:focus{
-	border: 1px solid #4791FF;
+	border: 1px solid #749263;
 }
 .ser-ico{
 	width: 100px;
@@ -97,13 +98,13 @@
 	line-height: 40px;
 	text-align: center;
 	display: inline-block;
-	background-color: #3385FF;
+	background-color: #749263;
 	float: right;
 	cursor: pointer;
 	color: #fff;
 }
 .ser-ico:hover{
-	background-color: #317EF3;
+	background-color: #749263;
 }
 
 .coupon{
@@ -129,8 +130,9 @@
 	line-height: 30px;
 }
 .privilege-list tr:hover{
-	background-color: #E5EBF0;
+	background-color: #749263;
 	cursor: pointer;
+	color: #fff;
 }
 .privilege-list td,.privilege-list th{
 	height: 30px;

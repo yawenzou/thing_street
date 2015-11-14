@@ -9,9 +9,11 @@ $shopchain_select=mysql_query("select * from chains where chains_dm = '$shop_typ
 $shopchain_result=mysql_fetch_assoc($shopchain_select);
 
 //选择评论表信息
-$comment_select=mysql_query("select * from comment where shop_id = '$shop_type_shop_dm_data' order by c_time desc")or die("选择失败".mysql_error());
+$comment_select=mysql_query("select * from comment where shop_id = '$shop_type_shop_dm_data' and feedback=0 order by c_time desc")or die("选择失败".mysql_error());
+$comment_select_all=mysql_query("select * from comment where shop_id = '$shop_type_shop_dm_data' and (feedback=0 or feedback=1) order by c_time desc")or die("选择失败".mysql_error());
 $correcting_select=mysql_query("select * from comment where shop_id = '$shop_type_shop_dm_data' and (feedback=2 or feedback=3)  order by c_time desc")or die("选择失败".mysql_error());
 $comment_num=mysql_num_rows($comment_select);
+$comment_all_num=mysql_num_rows($comment_select_all);
 $correcting_num=mysql_num_rows($correcting_select);
 ?>
 <div class="popup-title">店铺信息<span><a class="close">x</a></span></div>
@@ -97,6 +99,9 @@ $correcting_num=mysql_num_rows($correcting_select);
             <div class="server-img">
             <?php 
                 $shopmag_enviro_support=$shopmag_result['enviro_support'];
+                if(!$shopmag_enviro_support) {
+                    echo "<span height= '30px' width = '30px' style='line-height:30px;display: inline-block'>无</span>";
+                }
 
                 if(substr($shopmag_enviro_support, 0,1)==1){
                     echo "<img src='images/p.gif'/>";
@@ -113,6 +118,9 @@ $correcting_num=mysql_num_rows($correcting_select);
             <div class="server-img">
             <?php 
                 $shopmag_sever_support=$shopmag_result['sever_support'];
+                if(!$shopmag_sever_support) {
+                    echo "<span height= '30px' width = '30px' style='line-height:30px;display: inline-block'>无</span>";
+                }
                 if(substr($shopmag_sever_support, 4,1)==1){
                     echo "<img src='images/mt.gif'/>";
                 }
@@ -135,7 +143,7 @@ $correcting_num=mysql_num_rows($correcting_select);
 </div>
 
 <div class="comment J_click" style="display:none;">
-    <h3>消费评价<span class="my-comment">我要评论</span></h3>
+    <h3>消费评价<span class="my-comment">我要评论</span><span class= "show-comment-num">共<?php echo "$comment_all_num"; ?>条评论，显示<?php echo "$comment_num"; ?>条</span></h3>
     <div class="comment-list">
         <div class="com-cont">
             <form method="POST" id = <?php $formid="comment-form-cc".$l; echo "'$formid'"; ?>  enctype="multipart/form-data">
@@ -150,6 +158,9 @@ $correcting_num=mysql_num_rows($correcting_select);
             </form>
         </div>
         <?php
+        if(!$comment_num) {
+            echo "<div class = 'no-comment'>这里还没有评论，快来评论吧！</div>";
+        }
         for ($t=0; $t < $comment_num; $t++) {
             $comment_result=mysql_fetch_assoc($comment_select); 
             $comment_result_user_id=$comment_result['user_id'];
@@ -277,6 +288,9 @@ $correcting_num=mysql_num_rows($correcting_select);
             </form>
         </div>
         <?php
+        if(!$correcting_num) {
+            echo "<div class = 'no-comment'>暂无纠错信息！</div>";
+        }
         for ($t=0; $t < $correcting_num; $t++) {
             $correcting_result=mysql_fetch_array($correcting_select); 
             $correcting_result_user_id=$correcting_result['user_id'];
@@ -395,7 +409,7 @@ $correcting_num=mysql_num_rows($correcting_select);
                 <div class="skright-file"><input type="file" id="Organization_Certificate" name="Organization_Certificate"/></div>
             </div>
             <input type="submit" class="submit" value="提交" name="t1"> 
-        </form>      
+        </form>     
     </div>
 </div>
 

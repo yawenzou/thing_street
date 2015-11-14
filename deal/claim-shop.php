@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <?php
 //我是店主界面认领店铺处理代码
 
@@ -13,16 +14,16 @@
     $cellphone=$_POST["tellphone"];
     $identity_card=$_POST["identity_card"];
     if(!$_SESSION['name']){
-    	echo "请先登录！";
+    	$echo_massage = "请先登录！";
     }
     else if(!$name){
-    	echo "请输入姓名！";
+    	$echo_massage = "请输入姓名！";
     }
    /*else if(!preg_match("/^[\x80-\xff]{4,8}$/",$name)){
     	echo "请输入正确的姓名！";
     }*/
     else if(!$cellphone){
-    	echo "请输入手机号码！";
+    	$echo_massage = "请输入手机号码！";
     }
     /*else if(!strlen($cellphone) == "11"){
     	echo "请输入正确的手机号码！";
@@ -31,7 +32,7 @@
     	echo "请输入正确的手机号码！";
     }*/
     else if(!$identity_card){
-    	echo "请输入身份证号码！";
+    	$echo_massage = "请输入身份证号码！";
     }
     /*else if(!preg_match("/^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/",$identity_card)){
     	echo "请输入正确的身份证号码！";
@@ -60,17 +61,17 @@
 	    $a=strtolower(fileext($_FILES['business_license']['name']));
 	    $b=strtolower(fileext($_FILES['Organization_Certificate']['name']));
 	    if(!$a){
-	    	echo "请上传营业执照";
+	    	$echo_massage = "请上传营业执照";
 	    }
 	    elseif (!$b) {
-	     	echo "请上传组织结构代码证";
+	     	$echo_massage = "请上传组织结构代码证";
 	    }
 	    else{
 		    //判断文件类型   
 		    if(!in_array(strtolower(fileext($_FILES['business_license']['name'])),$type)||!in_array(strtolower(fileext($_FILES['Organization_Certificate']['name'])),$type))   
 		    {   
 		        $text=implode(",",$type);   
-		        echo "您只能上传以下类型文件: ",$text,"<br>";   
+		        $echo_massage = "您只能上传以下类型文件: ,".$text.",<br>"; 
 		    }   
 		    //生成目标文件的文件名       
 		    else{   
@@ -94,7 +95,7 @@
 		                $selt_shopowner=mysql_query("insert into shopowner (shop_id,user_id,business_license,organization_code,ownertime) values ('$shop_id','$user_id_data','$namea','$nameb','$ownertime')")or die(mysql_error());
 		                // var_dump($selt_shopowner);
 		                // var_dump($seltuser);
-		                echo "我们将会尽快为你验证，请等待通知！";
+		                $echo_massage = "我们将会尽快为你验证，请等待通知！";
 		            }
 		        }   
 		   }   
@@ -104,12 +105,15 @@
 
   //  header('Location:../index.php');
 ?>
-<div class="message_c_sad">
-    <p>5秒后将会为您跳转，如果您的浏览器没有自动跳转，请<a href="../index.php">点击这里</a></p>
+<div class="message_c_sad" style = 'width: 600px;height: 400px;border: 3px solid #749263;border-radius: 5px;margin: 20px auto;padding: 20px;'>
+    <?php 
+        echo "$echo_massage"; 
+    ?>
+    <p>5秒后将会为您跳转，如果您的浏览器没有自动跳转，请<a href="javascript:history.go(-1);">点击这里</a></p>
 </div>
 <script>
  setTimeout(function(){
-       window.location.href='../index.php';
- },5000)
+       history.go(-1);
+ },5000);
 
 </script>

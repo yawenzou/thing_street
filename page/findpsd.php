@@ -26,9 +26,10 @@
 				?>
 			</ul>
 		</div>
-		<div class="logo">
+		<!-- <div class="logo">
 			<a href="../search.php"><img src="../images/tit.gif"/></a>
-		</div>
+		</div> -->
+		<div class="register-title"><a href="../search.php"><img src="../images/tit.png"/></a></div>
 		<div class="psd-wrap">
 	        <div class="register-teb">
 	            <div class="teb-mod">邮箱找回密码</div>
@@ -37,7 +38,7 @@
 	        	<form id="magForm" name="magForm">
 	        		<div class=" magt100"></div>
 	                <div class="line">
-						<div class="label">邮箱: &nbsp;</div>
+						<div class="label">邮箱&nbsp;</div>
 						<input type="text" class="text-input" />
 					</div>
 					<div class="line">

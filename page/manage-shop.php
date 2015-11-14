@@ -36,9 +36,10 @@
 			?>
 			</ul>
 		</div>
-		<div class="logo">
+		<!-- <div class="logo">
 			<a href="../search.php"><img src="../images/tit.gif"/></a>
-		</div>
+		</div> -->
+		<div class="register-title"><a href="../search.php"><img src="../images/tit.png"/></a></div>
 		<div class="psd-wrap">
 	        <div class="psd-teb">
 	            <div class="teb-mod click" _content="modify-mag">修改店铺信息</div>
@@ -46,9 +47,9 @@
 	            <div class="teb-mod"  _content="manage-cm">评论管理</div>
 	        </div>
 	        <div class="modify-mag J_click">
-	        	<form method="post" name="modify-msg" id="modify-msg" action="../deal/modify-msg.php" enctype="multipart/form-data">
+	        	<form method="post" name="modify-msg" id="modify-msg" action="../deal/modify-msg.php" onsubmit="return modifyMsgCheck()" enctype="multipart/form-data">
 	                <div class="line">
-						<div class="label">选择店铺: &nbsp;</div>
+						<div class="label">选择店铺&nbsp;</div>
 						<select class="text-input" name="shop_dm" id="shop_dm">
 						<?php
 							$select_shopowner = mysql_query("select shop_id from shopowner where user_id = $user_id and pass = 1") or die(mysql_error());
@@ -58,44 +59,50 @@
 								$owner_shop_id = $select_shopowner_result[shop_id];
 								$select_shop = mysql_query("select * from shop where shop_dm = $owner_shop_id") or die(mysql_error());
 								$select_shop_result = mysql_fetch_assoc($select_shop);
-								var_dump($select_shop_result);
-								echo "<option value= $owner_shop_id >$select_shop_result[shop_mc]</option>";
+								//var_dump($select_shop_result);
+								echo "<option value= $select_shop_result[shop_dm] >$select_shop_result[shop_mc]</option>";
 							}
 						?>
 						</select>
-						<div class="label">联系方式: &nbsp;</div>
+					</div>
+					<div class="line">
+						<div class="label">商店名称&nbsp;</div>
+						<input type="text" class="text-input" name="shopName" id="shopName"/>
+						<div class="label">联系方式&nbsp;</div>
 						<input type="text" class="text-input" name="telno" id="telno"/>
 					</div>
 					<div class="line">
-						<div class="label">分类: &nbsp;</div>
+						<div class="label">分类&nbsp;</div>
 						<select class="text-input" name="type" id="type">
-							<option value="volvo">选择分类</option>
+							<option value="">选择分类</option>
 							<option value="A00">衣服饰品</option>
 							<option value="B00" >饮食</option>
-							<option value="C00">住</option>
-							<option value="D00" >行</option>
+							<option value="C00">住宿</option>
+							<option value="D00" >交通</option>
 							<option value="E00" >服务</option>
 							<option value="F00" >娱乐</option>
 							<option value="G00" >日用品</option>
 							<option value="H00">文化教育类</option>
-							<option value="I00">医</option>
+							<option value="I00">医疗相关</option>
 							<option value="J00">电子电器</option>
 							<option value="K00">公共服务</option>
 						</select>
-						<div class="label">营业状态: &nbsp;</div>
+						<div class="label">营业状态&nbsp;</div>
 						<select class="text-input" name="shop_state" id="shop_state">
-							<option value="volvo">选择营业状态</option>
+							<option value="">选择营业状态</option>
 							<option value="0">正常营业</option>
+							<option value="0">装修</option>
+							<option value="0">停业中</option>
 						</select>
 					</div>
 					<div class="line">
-						<div class="label">环境支持: &nbsp;</div>
+						<div class="label">环境支持:&nbsp;</div>
 						<label><input type="checkbox" class="checkbox"  name="pakking" id="pakking"/> 停车</label>
 						<label><input type="checkbox" class="checkbox" name="wc" id="wc"/> 厕所</label>
 						<label><input type="checkbox" class="checkbox" name="wifi" id="wifi" /> wife</label>
 					</div>
 					<div class="line">
-						<div class="label">服务支持: &nbsp;</div>
+						<div class="label">服务支持:&nbsp;</div>
 						<label><input type="checkbox" class="checkbox" name="mt" id="mt"/> 美团</label>
 						<label><input type="checkbox" class="checkbox" name="bdwm" id="bdwm"/> 百度外卖</label>
 						<label><input type="checkbox" class="checkbox" name="zfb" id="zfb"/> 支付宝</label>
@@ -103,7 +110,7 @@
 						<label><input type="checkbox" class="checkbox" name="tdd" id="tdd"/> 淘点点</label>
 					</div>
 					<div class="line" id="addline">
-					    <div class="label">上传图片: &nbsp;</div>
+					    <div class="label">上传图片:&nbsp;</div>
 						<input type="button" class="addpic" value="添加" />
 						<input type="text" style="display:none;" name="n" id="n">
 						
@@ -112,30 +119,51 @@
 					    <div class="label"></div>
 						<input type="submit" value="确&nbsp;认" id="basemagid" class="confirm"/>
 					</div>
+					<div class="line">
+					    <div class="label"></div>
+						<div class = "error" id = "error01" style = 'color: red;'></div> 
+					</div> 
 				</form>
 	        </div>
 	        <div class="publish-mag J_click">
-	            <form action="../deal/public-preferential.php" method="post">
+	            <form action="../deal/public-preferential.php" method="post" onsubmit="return publishPreferentialCheck()">
 	            	<div class="line">
-						<div class="label">优惠信息: &nbsp;</div>
-						<textarea class="textarea-input" name="preferential-msg"></textarea>
+						<div class="label">选择店铺&nbsp;</div>
+						<select class="text-input" name="shop_dm" id="shop_dm">
+						<?php
+							$select_shopowner = mysql_query("select shop_id from shopowner where user_id = $user_id and pass = 1") or die(mysql_error());
+							$select_shopowner_num = mysql_num_rows($select_shopowner);
+							for ($i=0; $i < $select_shopowner_num; $i++) { 
+								$select_shopowner_result = mysql_fetch_assoc($select_shopowner);
+								$owner_shop_id = $select_shopowner_result[shop_id];
+								$select_shop = mysql_query("select * from shop where shop_dm = $owner_shop_id") or die(mysql_error());
+								$select_shop_result = mysql_fetch_assoc($select_shop);
+								//var_dump($select_shop_result);
+								echo "<option value= $select_shop_result[shop_dm] >$select_shop_result[shop_mc]</option>";
+							}
+						?>
+						</select>
 					</div>
+	            	<div class="line">
+						<div class="label">优惠信息&nbsp;</div>
+						<textarea class="textarea-input" id = "preferential-msg" name="preferential-msg"></textarea>
+					</div><!-- 
 					<div class="line">
 						<div class="label">发布时间: &nbsp;</div>
 						<input type="text" class="text-input" name="public-time">
+					</div> -->
+					<div class="line">
+						<div class="label">优惠开始时间&nbsp;</div>
+						<input type="text" id = "d11" class="text-input" id="start-time" name="start-time" onClick="WdatePicker()">
 					</div>
 					<div class="line">
-						<div class="label">优惠开始时间: &nbsp;</div>
-						<input type="text" class="text-input" name="start-time">
+						<div class="label">优惠结束时间&nbsp;</div>
+						<input type="text" id = "d12" class="text-input" id = "end-time" name="end-time" onClick="WdatePicker()">
 					</div>
 					<div class="line">
-						<div class="label">优惠结束时间: &nbsp;</div>
-						<input type="text" class="text-input" name="end-time">
-					</div>
-					<div class="line">
-						<div class="label">优惠力度: &nbsp;</div>
-						<select class="text-input" name="dynamics">
-							<option value=" ">请选择</option>
+						<div class="label">优惠力度&nbsp;</div>
+						<select class="text-input"id = "dynamics" name="dynamics">
+							<option value="">请选择</option>
 							<option value="1">1</option>
 							<option value="2" >2</option>
 							<option value="3">3</option>
@@ -149,20 +177,24 @@
 						</select>
 					</div>
 					<div class="line">
-						<div class="label">优惠内容: &nbsp;</div>
-						<textarea class="textarea-input" name="p_content"></textarea>
+						<div class="label">优惠内容&nbsp;</div>
+						<textarea class="textarea-input" id = "p_content" name="p_content"></textarea>
 					</div>
-					<div class="line">
+					<!-- <div class="line">
 						<div class="label">是否过期: &nbsp;</div>
 						<select class="text-input" name="expired">
 							<option value="0">否</option>
 							<option value="1">是</option>
 						</select>
-					</div>
+					</div> -->
 					<div class="line">
 					    <div class="label"></div>
 						<input type="submit" value="确&nbsp;认" class="confirm"/>
 					</div>
+					<div class="line">
+					    <div class="label"></div>
+						<div class = "error" id = "error02" style = 'color: red;'></div> 
+					</div> 
 	            </form>
 	        </div>
 	        <?php
@@ -217,10 +249,10 @@
 			            	
 			            	<?php 
 			            		if($feedback ==0) {
-			            			echo "<div class = 'pass-btn' onclick = commentPass($comment_id) style = 'background-color: #959595'>";
+			            			echo "<div class = 'pass-btn pass-btn-click' onclick = commentPass(this,$comment_id)>";
 			            			echo "已通过";
 			            		}else{
-			            			echo "<div class = 'pass-btn' onclick = commentPass($comment_id)>";
+			            			echo "<div class = 'pass-btn' onclick = commentPass(this,$comment_id)>";
 			            			echo "确认通过";
 			            		} 
 			            	?>
@@ -243,5 +275,6 @@
 		</div>
 		<div class="footer">&copy;copyright版权所有</div>
 	</div>
+	<script type="text/javascript"src = "../js/My97DatePicker/WdatePicker.js"></script>
 </body>
 </html>

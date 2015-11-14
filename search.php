@@ -38,9 +38,10 @@ require("deal/dbconfig.php");
     	</ul>
     </div>
     <div class="mid">
-		<div class="logo">
+		<!-- <div class="logo">
 			<img src="images/tit.gif"/>
-		</div>
+		</div> -->
+		<div class="logo"><a href="search.php"><img src="images/tit.png"/></a></div>
 		<span class="place" id="place">杭州</span>
 		<span class="change-place">[切换城市]</span>
 		<div class="search" id="search">

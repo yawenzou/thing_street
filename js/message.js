@@ -67,10 +67,10 @@ function register(){  //注册判断
 				     	})
 
 				     	ajax.post("../deal/register_judge.php",{mail:mail,nicknames:nicknames,password:password},function(data){
-								var back = eval('(' +data+')');
+								//var back = eval('(' +data+')');
 								//alert(data);
-								if(back.login){
-									window.location.href = "../index.php";
+								if(data.login){
+									window.location.href = "../search.php";
 								}else {
 									document.getElementById('error').innerHTML = back.problem;
 								}

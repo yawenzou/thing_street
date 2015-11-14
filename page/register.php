@@ -17,7 +17,7 @@
 			<ul>
 				<?php 
 					if($_SESSION['islogin'] == true) {
-						echo "<li class='news'><a href='###'>消息</a></li>";
+						// echo "<li class='news'><a href='###'>消息</a></li>";
 						echo "<li class='pers'><a href='changemag.php'>".$_SESSION['name']."</a></li>";
 						echo "<li class='drop'><a href='../deal/delete-session.php' target='_top'>安全退出</a></li>";
 					}
@@ -28,9 +28,10 @@
 				?>
 			</ul>
 		</div>
-		<div class="logo">
+		<!-- <div class="logo">
 			<a href="../search.php"><img src="../images/tit.gif"/></a>
-		</div>
+		</div> -->
+		<div class="register-title"><a href="../search.php"><img src="../images/tit.png"/></a></div>
 		<div class="register-wrap">
 	        <div class="register-teb">
 	            <div class="teb-mod">邮箱注册</div>
@@ -47,29 +48,29 @@
 	            <!--=S 注册信息 表单-->
 	            <form id="registerForm" name="registerForm">
 	                <div class="line">
-						<div class="label">邮箱地址: &nbsp;</div>
+						<div class="label">邮箱地址&nbsp;</div>
 						<input type="text" class="register-input" id="mail" name="mail" />
 					</div>
 					<div class="line">
-						<div class="label">昵称: &nbsp;</div>
+						<div class="label">昵称&nbsp;</div>
 						<input type="text" class="register-input" id="nicknames" name="nicknames" />
 					</div>
 					<div class="line">
-						<div class="label">设置密码: &nbsp;</div>
+						<div class="label">设置密码&nbsp;</div>
 						<input type="password" class="register-input" id="password" name="password" />
 					</div>
 					<div class="line">
-						<div class="label">确认密码: &nbsp;</div>
+						<div class="label">确认密码&nbsp;</div>
 						<input type="password" class="register-input" id="againpsd" name="againpsd" />
 					</div>
 					<div class="line">
-						<div class="label">输入验证码: &nbsp;</div>
+						<div class="label">输入验证码&nbsp;</div>
 						<input type="text" class="register-input w100" id="code_char" name="againpsd" maxlength="4"/>
-						<img src="../deal/code_char.php" id="getcode_char" title="看不清，点击换一张" align="absmiddle">
+						<img src="../deal/code_char.php" id="getcode_char" title="看不清，点击换一张" align="absmiddle" style="margin-left:5px;height:32px">
 					</div>
 					<div class="line">
-					    <div class="label"></div>
-						<input type="checkbox" name="checkbox" id="checkbox"> &nbsp;我已经阅读并完全同意<a class="protocol">注册协议</a>
+					    <label><div class="label"></div>
+						<input type="checkbox" name="checkbox" id="checkbox"> &nbsp;我已经阅读并完全同意<a class="protocol">注册协议</a></label>
 					</div>
 					<div class="register-protocol">
 						<div class="protocol-title">

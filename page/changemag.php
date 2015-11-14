@@ -23,7 +23,7 @@
                     if ($u_type=='1') {
                         echo "<li class='news'><a href='manage-shop.php'>管理店铺</a></li>";
                     }
-					echo "<li class='news'><a href='###'>消息</a></li>";
+					// echo "<li class='news'><a href='###'>消息</a></li>";
 					echo "<li class='pers'><a href='changemag.php'>".$_SESSION['name']."</a></li>";
 					echo "<li class='drop'><a href='../deal/delete-session.php' target='_top'>安全退出</a></li>";
 				}
@@ -34,16 +34,17 @@
 			?>
 			</ul>
 		</div>
-		<div class="logo">
+		<!-- <div class="logo">
 			<a href="../search.php"><img src="../images/tit.gif"/></a>
-		</div>
+		</div> -->
+		<div class="register-title"><a href="../search.php"><img src="../images/tit.png"/></a></div>
 		<div class="psd-wrap">
 	        <div class="psd-teb">
 	            <div class="teb-mod click" _content="base-mag">基本信息</div>
 	            <div class="teb-mod"  _content="psd-bd">修改密码</div>
 	        </div>
 	        <div class="base-mag J_click">
-	        	<form id="magForm" name="magForm" method="post" action="../deal/change-msg.php"  enctype="multipart/form-data">
+	        	<form id="magForm" name="magForm" method="post" action="../deal/change-msg.php" enctype="multipart/form-data">
 	                <div class="line">
 						<div class="label">真实姓名: &nbsp;</div>
 						<input type="text" class="text-input"  id="name" name="name"/>
@@ -59,7 +60,7 @@
 					</div>
 					<div class="line">
 						<div class="label">生日: &nbsp;</div>
-						<input type="text" class="text-input" id="birthday" name="birthday" />
+						<input type="text" class="text-input" id="birthday" name="birthday"  onClick="WdatePicker()"/>
 					</div>
 					<div class="line">
 						<div class="label">职业: &nbsp;</div>
@@ -85,11 +86,14 @@
 					    <div class="label"></div>
 						<input type="submit" value="确&nbsp;认" id="basemagid" class="confirm"/>
 					</div>
-					
+					<div class="line">
+					    <div class="label"></div>
+						<div class = "error" id = "error1"></div>
+					</div>
 	            </form>
 	        </div>
 	        <div class="psd-bd J_click">
-	            <form id="psdForm" name="psdForm" method="post" action="../deal/Change-Password.php">
+	            <form id="psdForm" name="psdForm" method="post" onsubmit="return check()" action="../deal/Change-Password.php">
 	                <div class="line">
 						<div class="label">当前密码: &nbsp;</div>
 						<input type="text" class="text-input" id="nowpsd" name="nowpsd" />
@@ -106,13 +110,35 @@
 					    <div class="label"></div>
 						<input type="submit" value="确&nbsp;认" id="psdid" class="confirm"/>
 					</div>
+					<div class="line">
+					    <div class="label"></div>
+						<div class = "error" id = "error2"></div>
+					</div>
 					
 	            </form>
 	        </div>
 		</div>
 		<div class="footer">&copy;copyright版权所有</div>
 	</div>
+	<script type="text/javascript"src = "../js/My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
+	    function check() {
+			if($("#nowpsd").val() == '') {
+				$(".error").text("请输入当前密码！");
+				return false;
+			}
+			else if($("#newpsd").val() == '') {
+				$(".error").text("请输入新密码！");
+				return false;
+			}
+			else if($("#newpsd").val() != $("#againpsd").val()){
+				$("#error2").text("两次输入密码不一样！");
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
 		$(function(){
 			$(".teb-mod").click(function(){
 				$(".teb-mod").removeClass("click");
