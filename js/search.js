@@ -50,6 +50,11 @@ function detail(){//优惠信息内容显示
 	$(".J_detail").click(function(){
 		$(".pref_content").hide();
 		$("#"+"content"+$(this).attr("_num")).show();
+		var shipId= $(this).attr("_shopId");
+		var streetId = shipId.substr(0,10);
+		var streetCn = parseInt(shipId.substr(10,2));
+		var url = "index.php?n_c="+streetCn+"&street="+streetId;
+		$('#'+'content'+$(this).attr('_num')+ ' a').attr("href",url);
 	})
 }
 

@@ -69,7 +69,7 @@
             ?>
         </ul>
     </div>
-   <div id="title"><a href="search.php"><img src="images/tit.gif"></a></div>
+   <div id="title"><a href="search.php"><img src="images/tit.png"></a></div>
 <?php
     $street_dm_click0=$_GET['street'];
     if ($street_dm_click0!='') {
@@ -86,12 +86,17 @@
     $select=mysql_query("select * from relations where street_dm=$street_dm and street_cdm!='00'")or die("选择失败".mysql_error());
     $select_0=mysql_query("select * from relations where street_dm=$street_dm and street_cdm='00'")or die("选择失败".mysql_error());
     $street_num=mysql_num_rows($select);//街区的数量
-    if ($street_num==0) {
-        echo "<script>alert('您查询的页面没有建筑，请搜索另外的街道！');history.go(-1);</script>";
-    }
+    // var_dump($select);
+    // if ($street_num==0) {
+    //     echo "<script>alert('您查询的页面没有建筑，请搜索另外的街道！');history.go(-1);</script>";
+    // }
 ?>  
 <?php
    $selectmc=mysql_query("select * from relations where street_dm=$street_dm and street_cdm=$recmd")or die("选择失败".mysql_error());
+   $selectmc_num = mysql_num_rows($selectmc);
+   if ($selectmc_num==0) {
+        echo "<script>alert('您查询的页面没有建筑，请搜索另外的街道！');history.go(-1);</script>";
+    }
    $street_mc=mysql_fetch_array($selectmc);
    $street_mc_0=mysql_fetch_array($select_0);
    $street_mc__data_0 = $street_mc_0['street_mc'];

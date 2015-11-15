@@ -33,7 +33,7 @@ if($row){
     <div class="wrap">
     	<div class="header">
 			<ul>
-				<li class="news"><a href="###">消息</a></li>
+				<!-- <li class="news"><a href="###">消息</a></li> -->
 				<li><a href="../page/register.php">注册</a></li>
 				<li><a href="../page/login.php">登录</a></li>
 			</ul>
@@ -67,7 +67,7 @@ if($row){
 				</div> -->
 	        </div>
 		</div>
-		<div class="footer">&copy;copyright版权所有</div>
+		<!-- <div class="footer">&copy;copyright版权所有</div> -->
 	</div>
 
 	<script type="text/javascript">

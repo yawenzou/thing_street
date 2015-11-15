@@ -25,7 +25,7 @@
                     if ($u_type=='1') {
                         echo "<li class='news'><a href='manage-shop.php'>管理店铺</a></li>";
                     }
-					echo "<li class='news'><a href='###'>消息</a></li>";
+					// echo "<li class='news'><a href='###'>消息</a></li>";
 					echo "<li class='pers'><a href='changemag.php'>".$_SESSION['name']."</a></li>";
 					echo "<li class='drop'><a href='../deal/delete-session.php' target='_top'>安全退出</a></li>";
 				}
@@ -57,10 +57,11 @@
 							for ($i=0; $i < $select_shopowner_num; $i++) { 
 								$select_shopowner_result = mysql_fetch_assoc($select_shopowner);
 								$owner_shop_id = $select_shopowner_result[shop_id];
-								$select_shop = mysql_query("select * from shop where shop_dm = $owner_shop_id") or die(mysql_error());
+								//var_dump($owner_shop_id);
+								$select_shop = mysql_query("select * from shop where shop_dm = '$owner_shop_id'") or die(mysql_error());
 								$select_shop_result = mysql_fetch_assoc($select_shop);
 								//var_dump($select_shop_result);
-								echo "<option value= $select_shop_result[shop_dm] >$select_shop_result[shop_mc]</option>";
+								echo "<option value= $owner_shop_id >$select_shop_result[shop_mc]</option>";
 							}
 						?>
 						</select>
@@ -131,12 +132,12 @@
 						<div class="label">选择店铺&nbsp;</div>
 						<select class="text-input" name="shop_dm" id="shop_dm">
 						<?php
-							$select_shopowner = mysql_query("select shop_id from shopowner where user_id = $user_id and pass = 1") or die(mysql_error());
+							$select_shopowner = mysql_query("select shop_id from shopowner where user_id = '$user_id' and pass = 1") or die(mysql_error());
 							$select_shopowner_num = mysql_num_rows($select_shopowner);
 							for ($i=0; $i < $select_shopowner_num; $i++) { 
 								$select_shopowner_result = mysql_fetch_assoc($select_shopowner);
 								$owner_shop_id = $select_shopowner_result[shop_id];
-								$select_shop = mysql_query("select * from shop where shop_dm = $owner_shop_id") or die(mysql_error());
+								$select_shop = mysql_query("select * from shop where shop_dm = '$owner_shop_id'") or die(mysql_error());
 								$select_shop_result = mysql_fetch_assoc($select_shop);
 								//var_dump($select_shop_result);
 								echo "<option value= $select_shop_result[shop_dm] >$select_shop_result[shop_mc]</option>";
@@ -273,7 +274,7 @@
 	            </div>
 	        </div>
 		</div>
-		<div class="footer">&copy;copyright版权所有</div>
+		<!-- <div class="footer">&copy;copyright版权所有</div> -->
 	</div>
 	<script type="text/javascript"src = "../js/My97DatePicker/WdatePicker.js"></script>
 </body>

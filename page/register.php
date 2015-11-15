@@ -103,7 +103,7 @@
 				</div>
 	        </div>
 		</div>
-		<div class="footer">&copy;copyright版权所有</div>
+		<!-- <div class="footer">&copy;copyright版权所有</div> -->
 	</div>
 
 	<script type="text/javascript">

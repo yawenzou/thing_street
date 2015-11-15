@@ -19,7 +19,7 @@
     $period_end=$_POST['end-time'];
     $discount=$_POST['dynamics'];
     $p_content=$_POST['p_content'];
-    $expired=$_POST['expired'];
+    $expired=0;
     
     $selectid=mysql_query("select max(id) from preferential")or die("选择失败".mysql_error());
     $idresult=mysql_fetch_array($selectid);
@@ -41,7 +41,7 @@
         $echo_massage = "请输入优惠内容！";
     }
     else{
-        $insert=mysql_query("insert into preferential(id,owner,intro,publish_time,period_start,period_end,discount,p_content,shop_id,expired) value('$id','$owner','$intro','$public_time','$period_start','$period_end','$discount','$p_content','$shop_dm','0'") or die("插入数据失败".mysql_error());
+        $insert=mysql_query("insert into preferential (id, owner, intro, publish_time, period_start, period_end, discount, p_content, shop_id,expired) values ('$id', '$owner', '$intro', '$public_time', '$period_start', '$period_end', '$discount', '$p_content', '$shop_dm', '$expired')") or die("插入数据失败".mysql_error());
         if($insert) {
             $echo_massage = "发布优惠信息成功！";
         }

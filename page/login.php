@@ -60,7 +60,7 @@
 				<div id="error"></div>
 			</form>
 		</div>
-		<div class="footer">&copy;copyright版权所有</div>
+		<!-- <div class="footer">&copy;copyright版权所有</div> -->
 	</div>
 	<script type="text/javascript">
 		function login(){

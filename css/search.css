@@ -1,6 +1,6 @@
 /*搜索页面*/
 *{margin: 0px;padding:0px;text-decoration: none;list-style-type: none;}
-body{background-color: #ececec;}
+html,body{background-color: #ececec;}
 .header{
 	height: 30px;
 	width: 100%;
@@ -176,10 +176,11 @@ body{background-color: #ececec;}
 	right: 20px;
 	overflow: hidden;
 	display: none;
+	padding-bottom: 40px;
 }
 .pref_content-title{
 	height: 30px;
-	background-color: #000;
+	background-color: #161F28;
 	font-size: 18px;
 	text-indent: 5px;
 	color: #fff;
@@ -202,6 +203,7 @@ body{background-color: #ececec;}
 	overflow-x:hidden;
 	overflow-y:scroll; 
 	max-height: 210px;
+	margin: 10px;
 }
 
 .sertext{
@@ -217,7 +219,25 @@ body{background-color: #ececec;}
 }
 .sertext li a{
 	color: #000;
+	display: block;
 }
 .sertext li:hover{
 	background-color: #F2FA67;
+}
+.enter-shop-btn{
+	height: 28px;
+    line-height: 28px;
+    display: inline-block;
+    border: 1px solid #749263;
+    color: #749263;
+    font-size: 12px;
+    width: 80px;
+    text-align: center;
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+}
+.enter-shop-btn:hover{
+	background-color: #749263;
+	color: #e5e5e5;
 }

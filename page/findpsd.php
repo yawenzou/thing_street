@@ -15,7 +15,7 @@
 			<ul>
 				<?php 
 					if($_SESSION['islogin'] == true) {
-						echo "<li class='news'><a href='###'>消息</a></li>";
+						// echo "<li class='news'><a href='###'>消息</a></li>";
 						echo "<li class='pers'><a href='changemag.php'>".$_SESSION['name']."</a></li>";
 						echo "<li class='drop'><a href='../deal/delete-session.php' target='_top'>安全退出</a></li>";
 					}
@@ -49,7 +49,7 @@
 	            </form>
 	        </div>
 		</div>
-		<div class="footer">&copy;copyright版权所有</div>
+		<!-- <div class="footer">&copy;copyright版权所有</div> -->
 	</div>
 	<script type="text/javascript">
 		$(function(){

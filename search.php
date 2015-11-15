@@ -25,7 +25,7 @@ require("deal/dbconfig.php");
                     if ($u_type=='1') {
                         echo "<li class='news'><a href='page/manage-shop.php'>管理店铺</a></li>";
                     }
-					echo "<li class='news'><a href='###'>消息</a></li>";
+					// echo "<li class='news'><a href='###'>消息</a></li>";
 					echo "<li class='pers'><a href='page/changemag.php'>".$_SESSION['name']."</a></li>";
 					echo "<li class='drop'><a href='deal/delete-session.php' target='_top'>安全退出</a></li>";
 				}
@@ -85,10 +85,10 @@ require("deal/dbconfig.php");
 					$select_shop=mysql_query("select * from shop where shop_dm='$perfer_result_shop'")or die(mysql_error()); 
 					$shop_result=mysql_fetch_assoc($select_shop);
 					$shop_result_name= $shop_result['shop_mc'];
-					echo "<tr class='J_detail' _num='$i'>";
+					echo "<tr class='J_detail' _num='$i' _shopId = '$perfer_result_shop'>";
 						echo "<td class='w250' title=$perfer_result_content>$perfer_result_intro</td>";
 						echo "<td class='w100' title=$shop_result_name>$shop_result_name</td>";
-						echo "<td class='w150' title='$perfer_result_timestart ~ $perfer_result_timeend'>$perfer_result_timestart ~ $perfer_result_timeend</td>";
+						echo "<td class='w150' title='$perfer_result_timestart - $perfer_result_timeend'>$perfer_result_timestart - $perfer_result_timeend</td>";
 					echo "</tr>";
 				}
 			?>		
@@ -105,11 +105,12 @@ require("deal/dbconfig.php");
 		<div class='pref_content-title'>优惠详情<span class='close'>x</span></div>
 		<p>";
 			echo "$perfer_result_content";
-		echo "</p>
-	</div>";
+		echo "</p>";
+		echo "<a href = '###' class = 'enter-shop-btn'>进店查看</a>";
+	echo "</div>";
 		}
 		?>
-	<div class="footer">&copy;copyright版权所有</div>
+	<!-- <div class="footer">&copy;copyright版权所有</div> -->
 
 	
 	<script type="text/javascript">
