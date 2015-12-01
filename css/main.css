@@ -63,6 +63,7 @@ img{
 	text-align: center;
 	font-size: 12px;
 	color: #000;	
+	width: 50px;
 }
 .shopmag{
     position:relative;
@@ -118,7 +119,7 @@ a,img{
 a{cursor: pointer;}
 #playback li{margin:0px;padding:0px;}
 body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
-#header{background:#350f30;position: relative;}
+#header{background:#350f30;position: relative;opacity: 0.9;}
 #bottom{background:#350f30;}
 #nav{position:relative;background-color: #58543f;opacity: 0.9;}
 
@@ -135,7 +136,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 	padding:0px;
 }
 .navli li a{
-	color:#F00;
+	color:#Fff;
 	display:block;
 	text-align:center;
 }
@@ -169,9 +170,6 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 	top: 50%;
     margin-top: -7px;
 }
-#header p{
-	color: #FFF;
-}
 #title{
 	width: 250px;
 	float: left;
@@ -184,8 +182,14 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 	 width: 100%;
 	 color: #fff;
 	 height: 30px;
+	 background-color: #58543f;
+     height: 30px;
+     line-height: 30px;
+     text-indent: 7px;
+     color: #808080;
 }
 .ser p{
+	color: #959595;
 	display: inline-block;
 }
 .search-street{
@@ -215,30 +219,32 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 	border: 4px solid red;
 }
 
-.head{
+/*.head{
 	height: 30px;
 	width: 100%;
 	background-color: #F6E2C1;
 	font-size: 14px;
 	line-height: 30px;
-	position: absolute;
+	float: right;
 	opacity: 0;
 	filter: alpha(opacity=0);
 	cursor: pointer;
-}
-.head ul{
+}*/
+#header ul{
 	float: right;
 	margin-right: 20px;
-	width: 280px;
+	margin-top: 20px;
 }
-.head li{
-    width: auto;
-    padding: 0px 10px;
+#header li{
+    width: 60px;
+    text-align: center;
     float: left;
     display: inline-block;
+    overflow: hidden;
 }
-.head li a{
-	color: #000;
+#header li a{
+	color: #fff;
+	display: block;
 }
 
 #l2,#r2 {

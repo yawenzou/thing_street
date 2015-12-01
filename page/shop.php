@@ -16,8 +16,8 @@ $comment_num=mysql_num_rows($comment_select);
 $comment_all_num=mysql_num_rows($comment_select_all);
 $correcting_num=mysql_num_rows($correcting_select);
 ?>
-<div class="popup-title">店铺信息<span><a class="close">x</a></span></div>
-<div class="shop-title">
+<!-- <div class="popup-title">店铺信息<span><a class="close">x</a></span></div> -->
+<div class="shop-title"><a class="close">x</a>
     <ul>
         <li class="tit-teb click" _content="base-mag">基本信息</li>
         <li class="tit-teb" _content="comment">评论</li>
@@ -34,13 +34,13 @@ $correcting_num=mysql_num_rows($correcting_select);
 <div class="base-mag J_click">
     <div class="shopimg-wrap">
     <?php 
-        echo "<h2>";
-        $shopmag_result_shop_mc=$shopmag_result['shop_mc'];
-        echo "$shopmag_result_shop_mc";
-        if($shopmag_result['chains']!=0){
-            echo "<span><a class='totalshop'>总店</a></span>";
-        }
-        echo "</h2>";
+        // echo "<h2>";
+        // $shopmag_result_shop_mc=$shopmag_result['shop_mc'];
+        // echo "$shopmag_result_shop_mc";
+        // if($shopmag_result['chains']!=0){
+        //     echo "<span><a class='totalshop'>总店</a></span>";
+        // }
+        // echo "</h2>";
 
         $shopmag_result_photos=$shopmag_result['photos'];//读取图片
         $photos_arr=split(',', $shopmag_result_photos);
@@ -52,7 +52,7 @@ $correcting_num=mysql_num_rows($correcting_select);
                 $e=$h.'a';
                 $bigimgid=$e."bigimg";
                 echo "<div class='shopimg-biga $bigimgid' id=$bigimgid>
-                        <img src='$photos_arr_src[$h]' class='bigimg' width='400px' height='280px' />
+                        <img src='$photos_arr_src[$h]' class='bigimg' width='312px' height='200px' />
                     </div>";//店铺图片放大
             }
 
@@ -69,7 +69,11 @@ $correcting_num=mysql_num_rows($correcting_select);
     <div class="shop-centent">
         <div class="shop-line">
             <div class="llabel">店名：</div>
-            <div class="rlabel"><?php $shopmag_result_shop_mc= $shopmag_result['shop_mc'];echo "$shopmag_result_shop_mc"; ?></div>
+            <div class="rlabel"><?php $shopmag_result_shop_mc= $shopmag_result['shop_mc'];echo "$shopmag_result_shop_mc"; if($shopmag_result['chains']!=0){
+            echo "<span><a class='totalshop'>总店</a></span>";
+        }
+            ?>
+            </div>
         </div>
         <div class="shop-line">
             <div class="llabel">地址：</div>
@@ -77,7 +81,7 @@ $correcting_num=mysql_num_rows($correcting_select);
         </div>
         <div class="shop-line">
             <div class="llabel">联系方式：</div>
-            <div class="rlabel"><?php $shopmag_result_telno=$shopmag_result['telno'];echo "$shopmag_result_telno"; ?></div>
+            <div class="rlabel"><?php $shopmag_result_telno=$shopmag_result['telno'];if($shopmag_result_telno){echo "$shopmag_result_telno";}else {echo "无";} ?></div>
         </div>
         <div class="shop-line">
             <div class="llabel">分类：</div>
@@ -99,10 +103,7 @@ $correcting_num=mysql_num_rows($correcting_select);
             <div class="server-img">
             <?php 
                 $shopmag_enviro_support=$shopmag_result['enviro_support'];
-                if(!$shopmag_enviro_support) {
-                    echo "<span height= '30px' width = '30px' style='line-height:30px;display: inline-block'>无</span>";
-                }
-
+                
                 if(substr($shopmag_enviro_support, 0,1)==1){
                     echo "<img src='images/p.gif'/>";
                 }
@@ -112,15 +113,18 @@ $correcting_num=mysql_num_rows($correcting_select);
                 if(substr($shopmag_enviro_support, 2,1)==1){
                     echo "<img src='images/wifi.gif'/>";
                 }
+                else {
+                    echo "<span height= '30px' width = '30px' style='line-height:30px;display: inline-block'>无</span>"; 
+                }
             ?>
             </div>
+        </div>
+        <div class="server-support">
             <div class="server-label">服务支持：</div>
             <div class="server-img">
             <?php 
                 $shopmag_sever_support=$shopmag_result['sever_support'];
-                if(!$shopmag_sever_support) {
-                    echo "<span height= '30px' width = '30px' style='line-height:30px;display: inline-block'>无</span>";
-                }
+                
                 if(substr($shopmag_sever_support, 4,1)==1){
                     echo "<img src='images/mt.gif'/>";
                 }
@@ -135,6 +139,9 @@ $correcting_num=mysql_num_rows($correcting_select);
                 }
                 if(substr($shopmag_sever_support, 0,1)==1){
                     echo "<img src='images/tdd.gif'/>";
+                }
+                else {
+                    echo "<span height= '30px' width = '30px' style='line-height:30px;display: inline-block'>无</span>"; 
                 }
             ?>
             </div>
@@ -224,7 +231,7 @@ $correcting_num=mysql_num_rows($correcting_select);
 
 <div class="total-shop J_click" style="display:none;">
     <div class="shopimg-wrap">
-        <h2><?php $shopchain_result_chains_mc=$shopchain_result['chains_mc'];echo "$shopchain_result_chains_mc"; ?>总店</a></span></h2>
+        <!-- <h2><?php $shopchain_result_chains_mc=$shopchain_result['chains_mc'];echo "$shopchain_result_chains_mc"; ?>总店</a></span></h2> -->
 
         <?php 
             $shopchain_result_photos=$shopchain_result['photo'];//读取图片
@@ -238,7 +245,7 @@ $correcting_num=mysql_num_rows($correcting_select);
                 $e=$h+1;
                 $bigimgid=$e."bigimg";
                 echo "<div class='shopimg-big $bigimgid' id=$bigimgid>
-                        <img src='$photo_arr_src[$h]' class='bigimg' width='400px' height='280px' />
+                        <img src='$photo_arr_src[$h]' class='bigimg' width='312px' height='200px' />
                     </div>";//店铺图片放大
             }
 

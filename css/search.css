@@ -22,47 +22,12 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 .header li a{
 	color: #fff;
 }
-.mid{
-	width: 600px;
-	position: absolute;
-	left: 50%;
-	margin:150px 0px 0px -300px;
-}
 .logo{
 	width: 170px;
 	height: 60px;
 	vertical-align: middle;
 	margin-bottom: 15px;
 	position: relative;
-}
-.place{
-	position: absolute;
-	top: 0px;
-	margin-left: 170px;
-	font-size: 24px;
-	cursor: pointer;
-	font-weight: bold;
-	color: #fff;
-}
-.shangecity{
-	position: absolute;
-	left: 240px;
-	top: 0px;
-	width: 300px;
-	height: 150px;
-	background-color: #fff;
-	border: 1px solid #dedede;
-	display: none;
-}
-.shangecity li{
-	display: inline-block;
-	float: left;
-	padding:5px;
-	cursor: pointer;
-	color: #A8AFB3;
-}
-.shangecity li:hover{
-	color: #232323;
 }
 .change-place{
 	position: absolute;
@@ -73,41 +38,35 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 	color: #999999;
 }
 .search{
-	width: 600px;
+	width: 537px;
 	height: 40px;
 	position: relative;
+	left: 50%;
+	margin-left: -300px;
 }
 .ser{
 	width: 498px;
 	height: 38px;
-    border: 1px solid #749263;
-    display: inline-block;
-    line-height: 38px;
-    position: relative;
-    text-indent: 5px;
-    background-color: #ececec;
-}
-.ser:hover{
-	border: 1px solid #749263;
-}
-.ser:focus{
-	border: 1px solid #749263;
+	border: none;
+	display: inline-block;
+	line-height: 38px;
+	position: relative;
+	text-indent: 5px;
+	background-color: #fff;
+	opacity: 0.9;
 }
 .ser-ico{
-	width: 100px;
-	height: 40px;
+	width: 38px;
+	height: 38px;
 	line-height: 40px;
 	text-align: center;
 	display: inline-block;
-	background-color: #53072b;
+	background-color: #fff;
 	float: right;
 	cursor: pointer;
-	color: #fff;
+	color: #70bfea;
+	font-size: 27px;
 }
-.ser-ico:hover{
-	background-color: #350f30;
-}
-
 .coupon{
 	width: 500px;
 	height: 200px;
@@ -217,12 +176,10 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 
 .sertext{
 	width: 498px;
-	max-height: 100px;
+	max-height: 250px;
     line-height: 25px;
     text-indent: 5px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    border:1px solid #dedede;
+    overflow: hidden;
     float: left;
     display: none;
     background-color: #fff;

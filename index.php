@@ -46,30 +46,33 @@
 <body>
 <div id="header">
 
-    <div class="head">
-        <ul>
-            <?php 
-                if($_SESSION['islogin'] == true) {
-                    $nameuser=$_SESSION['name'];
-                    $select_user=mysql_query("select * from user where nicknames='$nameuser'")or die(mysql_error());
-                    $user_result=mysql_fetch_assoc($select_user);
-                    $u_type=$user_result['u_type'];
-                    if ($u_type=='1') {
-                        echo "<li class='news'><a href='page/manage-shop.php'>管理店铺</a></li>";
-                    }
-                    
-                  // echo "<li class='news'><a href='###'>消息</a></li>";
-                  echo "<li class='pers'><a href='page/changemag.php'>".$_SESSION['name']."</a></li>";
-                  echo "<li class='drop'><a href='deal/delete-session.php' target='_top'>安全退出</a></li>";
+    <!-- <div class="head">
+        
+    </div> -->
+   <div id="title">
+       <a href="search.php"><img src="images/tit.png"></a>
+   </div>
+   <ul>
+        <?php 
+            if($_SESSION['islogin'] == true) {
+                $nameuser=$_SESSION['name'];
+                $select_user=mysql_query("select * from user where nicknames='$nameuser'")or die(mysql_error());
+                $user_result=mysql_fetch_assoc($select_user);
+                $u_type=$user_result['u_type'];
+                if ($u_type=='1') {
+                    echo "<li class='news'><a href='page/manage-shop.php'>管理店铺</a></li>";
                 }
-                else {
-                  echo "<li><a href='page/register.php?q=index'>注册</a></li>";
-                  echo "<li><a href='page/login.php?q=index'>登录</a></li>";
-                }
-            ?>
-        </ul>
-    </div>
-   <div id="title"><a href="search.php"><img src="images/tit.png"></a></div>
+                
+              // echo "<li class='news'><a href='###'>消息</a></li>";
+              echo "<li class='pers'><a href='page/changemag.php' title = ".$_SESSION['name'].">".$_SESSION['name']."</a></li>";
+              echo "<li class='drop'><a href='deal/delete-session.php' target='_top'>安全退出</a></li>";
+            }
+            else {
+              echo "<li><a href='page/register.php?q=index'>注册</a></li>";
+              echo "<li><a href='page/login.php?q=index'>登录</a></li>";
+            }
+        ?>
+    </ul>
 <?php
     $street_dm_click0=$_GET['street'];
     if ($street_dm_click0!='') {

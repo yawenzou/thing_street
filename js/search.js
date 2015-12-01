@@ -23,7 +23,7 @@ function searchtext(){//出现搜索提示
 					if(result[1]=='0'){
 						result[1]=1;
 					}
-					var url="index.php?n_c="+result[1]+"&street="+result[0];
+					var url="index.php?street="+result[0]+"&n_c="+result[1];
 					var text="<li><a href="+url+">" + result[2] + "</a></li>";
 					//alert(text);
 					$(".sertext").append(text);
@@ -33,9 +33,11 @@ function searchtext(){//出现搜索提示
 					if(first[1]=='0'){
 						first[1]=1;
 					}
-					var firsturl="index.php?n_c="+first[1]+"&street="+first[0];
+					var firsturl="index.php?street="+first[0]+"&n_c="+first[1];
 					//alert(firsturl);
-					window.location.href=firsturl;
+					if(first[1]&&first[0]) {
+					    window.location.href=firsturl;
+					}
 				})
 			})
 		}	
@@ -53,18 +55,21 @@ function detail(){//优惠信息内容显示
 		var shipId= $(this).attr("_shopId");
 		var streetId = shipId.substr(0,10);
 		var streetCn = parseInt(shipId.substr(10,2));
-		var url = "index.php?n_c="+streetCn+"&street="+streetId;
+		var url = "index.php?street="+streetId+"&n_c="+streetCn;
 		$('#'+'content'+$(this).attr('_num')+ ' a').attr("href",url);
 	})
 }
 
 
 function change_city(){//城市切换
-	$(".change-place").mouseover(function(){
+	$(".place").click(function(){
 		$(".shangecity").show();
 	})
 	$(".shangecity li").click(function(){
 		document.getElementById("place").innerHTML=$(this).text();
+		$(".shangecity").hide();
+	})
+	$(".main").click(function(){
 		$(".shangecity").hide();
 	})
 }
