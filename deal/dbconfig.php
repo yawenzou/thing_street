@@ -1,7 +1,7 @@
 <?php
    define("HOST", "localhost");
    define("USER", "root");
-   define("PASS", "root");
+   define("PASS", "");
    define("DBNAME", "dxstreet");
    $link=mysql_connect(HOST,USER,PASS)or die("连接失败".mysql_error()); 
    $linkdb=mysql_select_db(DBNAME,$link)or die('连接数据库失败'.mysql_error());

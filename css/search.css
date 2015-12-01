@@ -1,6 +1,6 @@
 /*搜索页面*/
 *{margin: 0px;padding:0px;text-decoration: none;list-style-type: none;}
-html,body{background-color: #ececec;}
+html,body{background: url(../images/dxjbg.jpg) repeat;}
 .header{
 	height: 30px;
 	width: 100%;
@@ -42,6 +42,7 @@ html,body{background-color: #ececec;}
 	font-size: 24px;
 	cursor: pointer;
 	font-weight: bold;
+	color: #fff;
 }
 .shangecity{
 	position: absolute;
@@ -98,22 +99,31 @@ html,body{background-color: #ececec;}
 	line-height: 40px;
 	text-align: center;
 	display: inline-block;
-	background-color: #749263;
+	background-color: #53072b;
 	float: right;
 	cursor: pointer;
 	color: #fff;
 }
 .ser-ico:hover{
-	background-color: #749263;
+	background-color: #350f30;
 }
 
 .coupon{
 	width: 500px;
 	height: 200px;
-	bottom: 30px;
+	bottom: 0px;
 	position: absolute;
 	right: 0px;
 	overflow: hidden;
+	background-color: #53072b;
+	opacity: 0.9;
+	color: #fff;
+}
+.coupon h2 {
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	text-indent: 20px;
 }
 .footer{
 	height: 30px;
@@ -166,21 +176,20 @@ html,body{background-color: #ececec;}
 	text-align: center;
 }
 .pref_content{
-	width: 400px;
-	height: 250px;
+	width: 420px;
+	height: 200px;
 	background-color: #f9f9f9;
 	position: absolute;
-	border:1px solid #dedede;
 	z-index: 100px;
-	bottom: 40px;
-	right: 20px;
+	bottom: 10px;
+	right: 30px;
 	overflow: hidden;
 	display: none;
 	padding-bottom: 40px;
 }
 .pref_content-title{
 	height: 30px;
-	background-color: #161F28;
+	background-color: #53072b;
 	font-size: 18px;
 	text-indent: 5px;
 	color: #fff;
@@ -216,6 +225,7 @@ html,body{background-color: #ececec;}
     border:1px solid #dedede;
     float: left;
     display: none;
+    background-color: #fff;
 }
 .sertext li a{
 	color: #000;

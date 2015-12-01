@@ -302,11 +302,11 @@ echo "<div id='main'>";
                                 //$roadsrc='index'.'.php'.'?street='.$street_dm_click;
                                 echo "<div class='t3 $location_up_data'>";
                                 //var_dump($building_mc_up_data);
-                                    echo "<a href= $roadsrc><img src='building_photos/lu.jpeg' width='100px' class='img3'/><div class = 'road-name'>$building_mc_up_data</div></a>"; 
+                                    echo "<a href= $roadsrc class='img3' style = 'width: 100px;background: url(images/road.gif) repeat;display: inline-block;opacity: 0.9'><div class = 'road-name'>$building_mc_up_data</div></a>"; 
                                 echo "</div>";  
                             }
                             elseif($location_up_data=="3"){
-                                echo "<div class='t2'>
+                                echo "<div class='t2'><div class = 't2-bg' style ='width: 100%;height: 100%;position:absolute;left: 0px;top: 0px;background-color:#fff;opacity:0.7;'></div>
                                     <div class='build_label'>";
                                     //var_dump($shop_up_num[$b][$k]);
                                       for ($l=0; $l < $shop_up_num[$b][$k]; $l++) { 
@@ -335,7 +335,7 @@ echo "<div id='main'>";
                             }
                             elseif($location_up_data=="2"){ 
                                 echo "<div class='t1'></div>"; 
-                                echo "<div class='t2'>
+                                echo "<div class='t2'><div class = 't2-bg' style ='width: 100%;height: 100%;position:absolute;left: 0px;top: 0px;background-color:#fff;opacity:0.7;'></div>
                                           <div class='build_label' >";
                                                   //var_dump($shop_type_up[$b][$k]);
                                               for ($l=0; $l < $shop_up_num[$b][$k]; $l++) { 
@@ -365,7 +365,7 @@ echo "<div id='main'>";
                             elseif($location_up_data=="1"){  
                                 echo "<div class='t1'></div>"; 
                                 echo "<div class='t1'></div>"; 
-                                 echo "<div class='t2'>
+                                 echo "<div class='t2'><div class = 't2-bg' style ='width: 100%;height: 100%;position:absolute;left: 0px;top: 0px;background-color:#fff;opacity:0.7;'></div>
                                           <div class='build_label'>";
                                           //var_dump($shop_up_num[$b][$k]);
                                               for ($l=0; $l < $shop_up_num[$b][$k]; $l++) { 
@@ -463,12 +463,12 @@ echo "<div id='main'>";
                                     $roadsrc='index'.'.php'.'?street='.$street_dm_click.'&n_c='.$street_cmd.'&street_direction_data='.$street_direction_data.'&direction_data='.$direction_data;
                                     //$roadsrc='index'.'.php'.'?street='.$street_dm_click;
                                     echo "<div class='t3 $location_down_data'>";
-                                        echo "<a href= $roadsrc><img src='building_photos/lu.jpeg' width='100px' class='img3'/><div class = 'road-name'>$building_mc_down_data</div></a>"; 
+                                        echo "<a href= $roadsrc class='img3' style = 'width: 100px;background: url(images/road.gif) repeat;display: inline-block;opacity: 0.9'><div class = 'road-name'>$building_mc_down_data</div></a>"; 
                                     echo "</div>";
                                     
                                 }
                                 elseif($location_down_data=="1"){
-                                    echo "<div class='t2'>
+                                    echo "<div class='t2'><div class = 't2-bg' style ='width: 100%;height: 100%;position:absolute;left: 0px;top: 0px;background-color:#fff;opacity:0.7;'></div>
                                               <div class='build_label'>";
                                               
                                                   for ($l=0; $l < $shop_down_num[$b][$k]; $l++) { 
@@ -499,7 +499,7 @@ echo "<div id='main'>";
                                 elseif($location_down_data=="2"){ 
                                     echo "<div class='t1'></div>"; 
                                     // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>"; 
-                                    echo "<div class='t2'>
+                                    echo "<div class='t2'><div class = 't2-bg' style ='width: 100%;height: 100%;position:absolute;left: 0px;top: 0px;background-color:#fff;opacity:0.7;'></div>
                                               <div class='build_label'>";
 
                                                   for ($l=0; $l < $shop_down_num[$b][$k]; $l++) { 
@@ -531,7 +531,7 @@ echo "<div id='main'>";
                                     echo "<div class='t1'></div>"; 
                                     // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>"; 
                                     // echo "<div class='t1' style='background-image:url($space_img[$b]);background-size: 100% 100%;'><div></div></div>";  
-                                     echo "<div class='t2'>
+                                     echo "<div class='t2'><div class = 't2-bg' style ='width: 100%;height: 100%;position:absolute;left: 0px;top: 0px;background-color:#fff;opacity:0.7;'></div>
                                               <div class='build_label'>";
 
                                                   for ($l=0; $l < $shop_down_num[$b][$k]; $l++) { 

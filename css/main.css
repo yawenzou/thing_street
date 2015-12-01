@@ -1,18 +1,19 @@
 *{margin:0px;padding:0px;list-style-type:none;}
-html,body{background-color: #ececec;}
+html,body{background: url(../images/dxjbg.jpg) repeat;}
 img{
 	display: block;
 }
  .cont1{
 	 background:url("../images/road.gif") repeat; 
+	 opacity: 0.9;
  }
  .cont{
- 	background:url("../images/grass-bg.gif") repeat;
  	overflow: hidden;
  }
  .contair{
 	position:relative;
 	width:100%; 
+	/*background: url(../images/dxjbg.jpg) repeat;*/
 }
 .tableb{
 	height: 100%;
@@ -31,10 +32,11 @@ img{
 	bottom: 40%;
 	width: 80%;
 	text-align: center;
-	color: #fff;
+	color: #000;
 	margin-left: 10%;
-	border: 1px solid #fff;
+	border: 1px solid red;
 	border-radius: 5px;
+	background-color: #fff;
 }
 .t2,.t1{
 	width: auto;
@@ -43,8 +45,11 @@ img{
 	cursor: pointer;
 }
 .t2 {
-	background: url("../images/building-bg.gif") repeat;
-	border: 2px solid #C3F5D0;
+	/*background-color: #fff;
+	opacity: 0.5;*/
+	position: relative;
+	/*background: url("../images/building-bg.gif") repeat;*/
+	/*border: 2px solid #C3F5D0;*/
 }
 .space{
 	width: 50px;
@@ -57,7 +62,7 @@ img{
 	top: -16px;
 	text-align: center;
 	font-size: 12px;
-	color: #FFFFFF;	
+	color: #000;	
 }
 .shopmag{
     position:relative;
@@ -89,7 +94,7 @@ img{
 	bottom: 0px;
 	left: 5px;
 	font-size: 12px;
-	color: #FFF;
+	color: #000;
 }
 .shopblock{
 	display: inline-block;
@@ -113,11 +118,9 @@ a,img{
 a{cursor: pointer;}
 #playback li{margin:0px;padding:0px;}
 body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
-#header{background:#161F28;position: relative;}
-#bottom{background:#161F28;}
-#content{background:#CCC;}
-#nav{position:relative;
-}
+#header{background:#350f30;position: relative;}
+#bottom{background:#350f30;}
+#nav{position:relative;background-color: #58543f;opacity: 0.9;}
 
 .lin{
   position:relative;
@@ -208,7 +211,8 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 	background-color: #fff;
 	color: #000;
 	left: 120px;
-	border-radius: 17px;
+	border-radius: 22px;
+	border: 4px solid red;
 }
 
 .head{
@@ -239,7 +243,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 
 #l2,#r2 {
 	display: none;
-	color: rgb(249, 216, 223);
+	color: #000;
     height: 50px;
     width: 50px;
     position: fixed;
@@ -249,6 +253,9 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
     border: 1px solid;
     padding: 5px;
     cursor: pointer;
+    background-color: #fff;
+    border: 1px solid red;
+    border-radius: 10px;
 }
 #l2{
     left: 50px;
