@@ -199,21 +199,27 @@ function chag(nac){
 }
 
 function change(nac,j){
-	//$("#timeline .inside img").css("left",nac); 
-	//getUrlData(j);
-	var n_c;
-	$.ajax({
-	 	cache: false,
-	 	async: false,
-	 	type: "get",
-	 	url: "index.php?n_c="+j+"&street_direction_data='none'&direction_data='none'",
-	 	dataType:"html",
-	 	success: function (data) {
-	 		$("body").html(data);
-	 		$("#timeline .inside img").css("left",nac);
-	 		contentplay();
-	 	}
-    });
+	if(j==Number) {
+		$("#timeline .inside img").css("left",nac);
+	 	contentplay();
+	}
+	else {
+		// getUrlData(j);
+		var n_c;
+		$.ajax({
+		 	cache: false,
+		 	async: false,
+		 	type: "get",
+		 	url: "index.php?n_c="+j+"&street_direction_data='none'&direction_data='none'",
+		 	dataType:"html",
+		 	success: function (data) {
+		 		// $("body").html(data);
+		 		getUrlData(j);
+		 		$("#timeline .inside img").css("left",nac);
+		 		contentplay();
+		 	}
+	    });
+	}
 }
 
 function sumwidfun(){
@@ -288,6 +294,7 @@ function contentplay(){//框架里的页面根据横坐标比例偏移动画
 	}
 	j=k+1;
 	$('#contair'+j).animate({left:-y},0.1);/**/
+	// $("#timeline .inside img").css("left",factx);
 }
 
 function introStop(){//动画停止
@@ -381,8 +388,9 @@ function changeimg(){
 	var leftimg;
 	//alert(sumwid);
 	if(street_dir_data=='none'||dir_data=='none'||dir_data=='10'||street_dir_data=='10'){//alert(street_dir_data+dir_data);
+		leftimg=sumwid[Number-2];
+		$("#timeline .inside img").animate({left:leftimg},1);
 		return;
-		//leftimg=sumwid[Number-2];
 	}
 	else{
 		if (Number==1){

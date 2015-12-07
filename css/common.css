@@ -1,7 +1,9 @@
+*{margin: 0px;padding:0px;text-decoration: none;list-style-type: none;}
+html,body{font-size: 14px;font-family"Microsoft YaHei";background: url(../images/dxjbg.jpg) repeat;}
 .top {
 	height: 110px;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	left: 0px;
 }
@@ -85,13 +87,10 @@
 .shangecity li:hover{
 	color: #232323;
 }
-.wrap{
-	padding-top: 150px;
-}
 .footer{
 	height: 80px;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	bottom: 0px;
 	left: 0px;
 	background-color: #350f30;

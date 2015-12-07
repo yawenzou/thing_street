@@ -34,12 +34,14 @@ function SubmitReview(dh,shop_id,n){
 
 
 function bindevent(){
+    $(".base-mag").show();
 	//店铺信息内容切换
     $(".tit-teb").click(function(){
-        $(".tit-teb").removeClass("click");
-        $(this).addClass("click");
-        $(".J_click").hide();
-        $("."+$(this).attr("_content")).show();
+        // $(".tit-teb").removeClass("click");
+        $(this).addClass("click").siblings().removeClass("click");
+        // $(".J_click").hide();
+        $(this).parents(".shop-title").siblings(".J_click").hide();
+        $(this).parents(".shop-title").siblings("."+$(this).attr("_content")).show();
     })
 
     $(".close").click(function(){

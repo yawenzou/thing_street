@@ -1,46 +1,9 @@
 /*搜索页面*/
-*{margin: 0px;padding:0px;text-decoration: none;list-style-type: none;}
-html,body{background: url(../images/dxjbg.jpg) repeat;}
-.header{
-	height: 30px;
-	width: 100%;
-	background-color: #749263;
-	font-size: 14px;
-	line-height: 30px;
-}
-.header ul{
-	float: right;
-	margin-right: 20px;
-	width: 280px;
-}
-.header li{
-    width: auto;
-    padding: 0px 10px;
-    float: left;
-    display: inline-block;
-}
-.header li a{
-	color: #fff;
-}
-.logo{
-	width: 170px;
-	height: 60px;
-	vertical-align: middle;
-	margin-bottom: 15px;
-	position: relative;
-}
-.change-place{
-	position: absolute;
-	top: 30px;
-	margin-left: 170px;
-	font-size: 14px;
-	cursor: pointer;
-	color: #999999;
-}
+
 .search{
 	width: 537px;
 	height: 40px;
-	position: relative;
+	position: absolute;
 	left: 50%;
 	margin-left: -300px;
 }
@@ -55,6 +18,9 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 	background-color: #fff;
 	opacity: 0.9;
 }
+.wrap{
+	padding-top: 150px;
+}
 .ser-ico{
 	width: 38px;
 	height: 38px;
@@ -68,15 +34,16 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 	font-size: 27px;
 }
 .coupon{
-	width: 500px;
-	height: 200px;
-	bottom: 0px;
-	position: absolute;
-	right: 0px;
+	width: 420px;
+	height: 250px;
+	/* bottom: 0px; */
+	/* position: absolute; */
+	/* right: 0px; */
 	overflow: hidden;
 	background-color: #53072b;
 	opacity: 0.9;
 	color: #fff;
+	/* display: none; */
 }
 .coupon h2 {
 	height: 30px;
@@ -113,14 +80,14 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 	text-indent: 5px;
 	text-align: center;
 }
-.w250{
-	width: 200px;
+.w180{
+	width: 180px;
 }
-.w100{
-	width: 100px;
+.w80{
+	width: 80px;
 }
 .w150{
-	width: 200px;
+	width: 150px;
 }
 .th{
 	height: 30px;
@@ -140,11 +107,12 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 	background-color: #f9f9f9;
 	position: absolute;
 	z-index: 100px;
-	bottom: 10px;
-	right: 30px;
+	bottom: 50%;
 	overflow: hidden;
 	display: none;
-	padding-bottom: 40px;
+	left: 50%;
+	margin-left: -210px;
+	margin-bottom: -100px;
 }
 .pref_content-title{
 	height: 30px;
@@ -169,8 +137,8 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 	text-indent: 28px;
 	padding-left: 5px;
 	overflow-x:hidden;
-	overflow-y:scroll; 
-	max-height: 210px;
+	/*overflow-y:scroll; 
+*/	max-height: 210px;
 	margin: 10px;
 }
 
@@ -183,6 +151,8 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
     float: left;
     display: none;
     background-color: #fff;
+    position: relative;
+    z-index: 11;
 }
 .sertext li a{
 	color: #000;
@@ -207,4 +177,64 @@ html,body{background: url(../images/dxjbg.jpg) repeat;}
 .enter-shop-btn:hover{
 	background-color: #749263;
 	color: #e5e5e5;
+}
+
+.banner {
+	margin: 100px auto 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+.banner-img{
+	position: relative;
+	height: 250px;
+}
+.banner-img  .banner-img-li{
+	height: 250px;
+	width: 420px;
+	padding: 0px 15px;
+	float: left;
+}
+.banner-img .banner-img-li img{
+	height: 250px;
+	width: 420px;
+}
+.banner-progressbar{
+	width: 100%;
+	height: 30px;
+	background-color: #58543f;
+	opacity: 0.9;
+	position: absolute;
+	bottom: 80px;
+	left: 0px;
+}
+.left-icon{
+	float:left;
+	margin-left: 15px;
+}
+.right-icon{
+	float:right;
+	margin-right: 15px;
+}
+.left-icon,.right-icon{
+	font-size: 27px;
+	color: #968581;
+	cursor: pointer;
+}
+.banner-progressbar-ul{
+	height: 30px;
+	margin: 0 auto;
+	position: relative;
+}
+.banner-progressbar-ul .banner-progressbar-li{
+	width: 20%;
+	background-color: #968581;
+	height: 5px;
+	cursor: pointer;
+	float: left;
+	margin-top: 12px;
+}
+.banner-progressbar-ul .circle {
+	position: absolute;
+	top: 7px;
+	color: #968581;
 }

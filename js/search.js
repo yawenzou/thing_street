@@ -59,17 +59,3 @@ function detail(){//优惠信息内容显示
 		$('#'+'content'+$(this).attr('_num')+ ' a').attr("href",url);
 	})
 }
-
-
-function change_city(){//城市切换
-	$(".place").click(function(){
-		$(".shangecity").show();
-	})
-	$(".shangecity li").click(function(){
-		document.getElementById("place").innerHTML=$(this).text();
-		$(".shangecity").hide();
-	})
-	$(".main").click(function(){
-		$(".shangecity").hide();
-	})
-}

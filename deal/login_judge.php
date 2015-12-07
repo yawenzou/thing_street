@@ -9,7 +9,7 @@
 	$select_user=mysql_query("select * from user where mail='$user' or nicknames='$user'")or die("选择失败！".mysql_error());
 	$result=mysql_fetch_assoc($select_user);
 
-	if($user==$result['mail']||$user==$result['nicknames'] && $password==$result['password']){
+	if(($user==$result['mail']||$user==$result['nicknames']) && $password==$result['password']){
 		$act['login'] = true;
 		session_start();
 		$_SESSION['id'] = $result['id'];

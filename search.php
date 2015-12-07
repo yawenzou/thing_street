@@ -11,6 +11,8 @@ require("deal/dbconfig.php");
 	<link rel="stylesheet" type="text/css" href="css/font-awesome-4.4.0/css/font-awesome.css"/>
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="js/search.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/banner.js"></script>
 </head>
 <body>
 <?php
@@ -65,38 +67,62 @@ require("deal/dbconfig.php");
 			<div class="ser-ico" id="ser-ico" title="街道、建筑、商店之间用空格分开"><i class = "fa fa-search"></i></div>
 			<ul class='sertext' id='sertext'></ul>
 		</div>
-	</div>
-	<div class="coupon">
-		<h2>店铺优惠信息</h2>
-		<ul class="th">
-			<li class='w250'>优惠信息</li>
-			<li class='w100'>优惠店铺</li>
-			<li class='w150'>优惠时间段</li>
+		<div class = "banner">
+			<ul class = "banner-img">
+				<li class = "banner-img1 banner-img-li"><img src="images/banner1.png"/></li>
+				<li class = "banner-img2 banner-img-li">
+					<div class="coupon">
+						<h2>店铺优惠信息</h2>
+						<ul class="th">
+							<li class='w180'>优惠信息</li>
+							<li class='w80'>优惠店铺</li>
+							<li class='w150'>优惠时间段</li>
+						</ul>
+						<marquee behavior="scroll" direction="up" loop="-1" scrollamount="3" height="165px;" scrolldelay="0" onMouseOut="this.start()" onMouseOver="this.stop()">	
+						<table class="privilege-list" cellpadding="0" cellspacing="0" border="0">
+							<?php 
+								$select_prefer=mysql_query("select * from preferential where expired='0'")or die(mysql_error()); 
+								$perfer_num=mysql_num_rows($select_prefer);
+								for ($i=0; $i < $perfer_num; $i++) {
+									$perfer_result=mysql_fetch_assoc($select_prefer);
+									$perfer_result_intro=$perfer_result['intro'];
+									$perfer_result_content=$perfer_result['p_content'];
+									$perfer_result_timestart=$perfer_result['period_start'];
+									$perfer_result_timeend=$perfer_result['period_end'];
+									$perfer_result_shop=$perfer_result['shop_id'];
+									$select_shop=mysql_query("select * from shop where shop_dm='$perfer_result_shop'")or die(mysql_error()); 
+									$shop_result=mysql_fetch_assoc($select_shop);
+									$shop_result_name= $shop_result['shop_mc'];
+									echo "<tr class='J_detail' _num='$i' _shopId = '$perfer_result_shop'>";
+										echo "<td class='w180' title=$perfer_result_content>$perfer_result_intro</td>";
+										echo "<td class='w80' title=$shop_result_name>$shop_result_name</td>";
+										echo "<td class='w150' title='$perfer_result_timestart - $perfer_result_timeend'>$perfer_result_timestart - $perfer_result_timeend</td>";
+									echo "</tr>";
+								}
+							?>		
+						</table>
+						</marquee>
+					</div>
+				</li>
+				<li class = "banner-img3 banner-img-li"><img src="images/banner3.jpg"/></li>
+				<li class = "banner-img4 banner-img-li"><img src="images/banner4.jpg"/></li>
+				<li class = "banner-img5 banner-img-li"><img src="images/banner5.jpg"/></li>
+			</ul>
+		</div>
+		<ul class = "banner-progressbar">
+			<li class = "left-icon"><i class="fa fa-caret-left"></i></li>
+			<li class = "right-icon"><i class="fa fa-caret-right"></i></li>
+			<li>
+				<ul class = "banner-progressbar-ul">
+					<li class = "circle"><i class = "fa fa-circle"></i></li>
+					<li class ="banner-progressbar-li" _number = "0"></li>
+					<li class ="banner-progressbar-li" _number = "1"></li>
+					<li class ="banner-progressbar-li" _number = "2"></li>
+					<li class ="banner-progressbar-li" _number = "3"></li>
+					<li class ="banner-progressbar-li" _number = "4"></li>
+				</ul>
+			</li>
 		</ul>
-		<marquee behavior="scroll" direction="up" loop="-1" scrollamount="3" height="140px;" scrolldelay="0" onMouseOut="this.start()" onMouseOver="this.stop()">	
-		<table class="privilege-list" cellpadding="0" cellspacing="0" border="0">
-			<?php 
-				$select_prefer=mysql_query("select * from preferential where expired='0'")or die(mysql_error()); 
-				$perfer_num=mysql_num_rows($select_prefer);
-				for ($i=0; $i < $perfer_num; $i++) {
-					$perfer_result=mysql_fetch_assoc($select_prefer);
-					$perfer_result_intro=$perfer_result['intro'];
-					$perfer_result_content=$perfer_result['p_content'];
-					$perfer_result_timestart=$perfer_result['period_start'];
-					$perfer_result_timeend=$perfer_result['period_end'];
-					$perfer_result_shop=$perfer_result['shop_id'];
-					$select_shop=mysql_query("select * from shop where shop_dm='$perfer_result_shop'")or die(mysql_error()); 
-					$shop_result=mysql_fetch_assoc($select_shop);
-					$shop_result_name= $shop_result['shop_mc'];
-					echo "<tr class='J_detail' _num='$i' _shopId = '$perfer_result_shop'>";
-						echo "<td class='w250' title=$perfer_result_content>$perfer_result_intro</td>";
-						echo "<td class='w100' title=$shop_result_name>$shop_result_name</td>";
-						echo "<td class='w150' title='$perfer_result_timestart - $perfer_result_timeend'>$perfer_result_timestart - $perfer_result_timeend</td>";
-					echo "</tr>";
-				}
-			?>		
-		</table>
-		</marquee>
 	</div>
 		<?php 
 
@@ -120,6 +146,7 @@ require("deal/dbconfig.php");
 		searchtext();
 		detail();
 		change_city();
+		banner();
 	</script>
 </body>
 </html>

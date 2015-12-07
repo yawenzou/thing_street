@@ -1,6 +1,4 @@
-*{margin: 0px;padding:0px;text-decoration: none;list-style-type: none;}
-html,body{height: 100%;font-size: 14px;font-family"Microsoft YaHei";background: url(../images/dxjbg.jpg) repeat;}
-.wrap{width: 100%;height: 100%;background: url(../images/dxjbg.jpg) repeat;min-height: 600px;}
+.wrap{padding-top: 30px;}
 .logo{width: 170px;height: 60px;vertical-align: middle;background-color: #F92672;position: absolute;top: 0px;left: 0px;}
 .w100{width: 100px;}
 .w30{width: 30px;}
@@ -41,7 +39,7 @@ html,body{height: 100%;font-size: 14px;font-family"Microsoft YaHei";background: 
 .magl-20{margin-left: -20px;}
 
 /*个人信息完善页面*/
-.psd-wrap{width: 860px;height: 600px;background-color: #fff;margin: 100px auto;padding-left: 70px;padding-right: 70px;border: 3px solid #749263;border-radius: 5px;}
+.psd-wrap{width: 630px;height: 480px;background-color: #fff;margin: 80px auto 10px auto;padding-left: 70px;padding-right: 70px;border-radius: 5px;opacity: 0.95;}
 .psd-teb{overflow: hidden;_zoom:1;height: 45px;line-height: 45px;padding-top: 40px;padding-left: 40px;}
 .psd-teb .teb-mod{float: left;width:150px;text-align:center;overflow: hidden;_zoom:1;font-size: 24px;font-weight: bold;display: inline-block;cursor: pointer;border: 1px solid #dbdbdb;height: 40px;line-height: 40px;color: #dbdbdb;}
 
@@ -68,15 +66,14 @@ label{height: 30px;line-height: 30px;}
 
 /*登陆界面*/
 .logon-title{font-size: 32px;height: 60px;color: #739166;line-height: 60px;position: absolute;left: 50%;margin-left: -200px;width: 400px;top: 50%;margin-top: -215px;}
-.logon-wrap{background-color: #fff;width: 398px;height: 308px;border: 1px solid #d7d7d7;position: absolute;left: 50%;margin-left: -200px;top: 50%;margin-top: -150px;right: 300px;}
-.logon-wrap-title {width: 100%;height: 51px; line-height: 51px;text-indent: 30px;font-size:16px;color:#313131;border-bottom: 1px solid #d7d7d7; }
+.logon-wrap{background-color: #fff;width: 398px;height: 308px;position: absolute;left: 50%;margin-left: -200px;top: 50%;margin-top: -150px;right: 300px;opacity: 0.9;}
+.logon-wrap-title {width: 100%;height: 51px; line-height: 51px;text-indent: 30px;font-size:16px;color:#fff;background-color: #350f30;}
 .logon-wrap form{padding:15px 30px; color: #313131;}
 .labeld,.loginput{display: inline-block;float: left;height: 35px;line-height: 35px;}
 .labeld{width: 50px;text-align: right;}
-.loginput{margin-left: 10px;width: 220px;padding-left: 5px;border: 1px #d7d7d7 solid;border-radius: 3px;}
-.loginput-input:hover,.loginput-input:focus{border: #749263 1px solid;}
-.code{width: 200px;height: 35px;background-color: #749263;display: inline-block;float: left;font-size: 16px;font-weight: bold;text-align: center;line-height: 35px;border-radius: 5px;}
-.code:hover{background-color: #83af6a;cursor: pointer;;}
+.loginput{margin-left: 10px;width: 220px;padding-left: 5px;border: 1px #ad3535 solid;border-radius: 3px;}
+.loginput-input:hover,.loginput-input:focus{border: 1px #ad3535 solid;}
+.code{width: 200px;height: 35px;background-color: #350f30;display: inline-block;float: left;font-size: 16px;font-weight: bold;text-align: center;line-height: 35px;border-radius: 5px;color: #fff;cursor: pointer;}
 .line-other{margin-left: 10px;height: 30px;line-height: 30px;}
 .line-02{margin: 10px;overflow: hidden;}
 .fogetcode{width: 80px;float: left;display: inline-block;}
@@ -88,12 +85,11 @@ label{height: 30px;line-height: 30px;}
 
 
 /*注册界面*/
-.register-title{width: 1000px;left: 50%;margin-left:-500px;top: 60px;position: absolute;}
-.register-wrap{width: 860px;height: 600px;background-color: #fff;margin: 100px auto;padding-left: 70px;padding-right: 70px;border: 3px solid #749263;border-radius: 5px;}
-.register-teb{overflow: hidden;_zoom:1;height: 45px;line-height: 45px;padding-top: 40px;padding-left: 40px;}
+.register-wrap{width: 630px;height: 540px;background-color: #fff;margin: 100px auto 10px auto;padding-left: 70px;padding-right: 70px;border-radius: 5px;opacity: 0.95;}
+.register-teb{overflow: hidden;_zoom:1;height: 45px;line-height: 45px;padding-top: 20px;}
 .register-teb p{float: right;display: block;padding-top:10px;font: 400 16px/30px simsun;color: #313131;}
 .register-teb .teb-mod{float: left;width:200px;overflow: hidden;_zoom:1;font-size: 24px;font-weight: bold;display: inline-block;}
-.register-hd{height: 45px;margin-top: 30px;line-height: 45px;font-size: 20px;clear: both;overflow: hidden;}
+.register-hd{height: 45px;line-height: 45px;font-size: 20px;clear: both;overflow: hidden;}
 .register-hd .underway{background-color: #749263;color: #fff;}
 .register-hd span{background-color: #BFE6B9;border: 1px solid #BFB3BF;display: inline-block;float: left;width: 200px;height: 40px;color: #9E9F8C;text-align: center;}
 .register-bd{width: 500px;margin: 30px auto;height: 30px;}
@@ -121,8 +117,15 @@ a:hover{color: #83af6a;;cursor: pointer;}
 .finished{display: none;padding-top: 30px;padding-left: 50px;}
 
 
+/*找回密码界面*/
+.findpsd-wrap{width: 630px;height: 450px;background-color: #fff;margin: 100px auto 10px auto;padding-left: 70px;padding-right: 70px;border-radius: 5px;opacity: 0.95;}
+
+
 
 /*管理店铺信息界面*/
+.manage-wrap{
+	width: 715px;height: 520px;background-color: #fff;margin: 100px auto 10px auto;padding-left: 70px;padding-right: 70px;border-radius: 5px;opacity: 0.95;
+}
 .publish-mag{
 	display: none;
 }
@@ -148,7 +151,7 @@ a:hover{color: #83af6a;;cursor: pointer;}
 
 /*评论管理界面*/
 .manage-cm {
-	height: 480px;
+	height: 410px;
 	overflow-y: scroll;
 }
 .manage-cm-title{
@@ -217,7 +220,7 @@ a:hover{color: #83af6a;;cursor: pointer;}
 	float: left;
 }
 .reply-textarea{
-	width: 660px;
+	width: 580px;
 	height: 50px;
 	border:1px solid #d7d7d7;
 	resize: none;
